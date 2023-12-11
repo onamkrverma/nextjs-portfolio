@@ -1,18 +1,18 @@
 import { cva } from "class-variance-authority";
 
 const button = cva(
-  "inline-flex justify-center rounded-md text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 cursor-pointer",
+  "inline-flex justify-center rounded-lg text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 cursor-pointer",
   {
     variants: {
       variant: {
         primary: [
-          "bg-primary-700",
-          "focus:bg-primary-800",
-          "hover:bg-primary-800",
+          "bg-primary-800",
+          "focus:bg-primary-900",
+          "hover:bg-primary-900",
           "disabled:bg-primary-500",
           "disabled:pointer-events-none",
           "disabled:select-none",
-          "focus-visible:outline-primary-800",
+          "focus-visible:outline-primary-900",
           "text-white",
           "py-3 px-4 w-fit",
         ],
