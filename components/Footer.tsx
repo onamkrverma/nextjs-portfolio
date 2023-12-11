@@ -3,6 +3,7 @@ import Typography from "@components/Typography";
 import Image from "next/image";
 import Link from "next/link";
 import footerGradient from "../public/footerGradient.svg";
+import { poppins } from "@app/fonts";
 
 const Footer = () => {
   const navLinks = [
@@ -45,7 +46,7 @@ const Footer = () => {
               link="/"
               variant="icon"
               title="onam"
-              className="!text-3xl !p-0 !font-bold"
+              className={`!text-3xl !p-0 !font-bold ${poppins.className}`}
             >
               {"<Onam/>"}
             </Button>
@@ -92,7 +93,7 @@ const Footer = () => {
             link="/"
             variant="icon"
             title="onam"
-            className="!text-3xl !p-0 !font-bold"
+            className={`!text-3xl !p-0 !font-bold ${poppins.className}`}
           >
             {"<Onam/>"}
           </Button>

@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Button from "@components/Button";
 import { usePathname } from "next/navigation";
+import { poppins } from "@app/fonts";
 
 const Navbar = () => {
   const navLinks = [
@@ -86,7 +87,7 @@ const Navbar = () => {
               link="/"
               variant="icon"
               title="onam"
-              className="!text-lg !p-0 !font-bold"
+              className={`!text-2xl !p-0 !font-bold ${poppins.className}`}
             >
               {"<Onam/>"}
             </Button>
