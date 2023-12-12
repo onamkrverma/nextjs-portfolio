@@ -3,8 +3,8 @@ import { cva } from "class-variance-authority";
 const typography = cva("", {
   variants: {
     variant: {
-      primary: ["text-primary-900"],
-      secondary: ["text-primary-600"],
+      primary: ["text-primary-900 dark:text-primary-50"],
+      secondary: ["text-primary-600 dark:text-primary-400"],
       button: ["text-white font-semibold"],
       error: ["text-sm text-danger-600"],
       "app-primary": ["text-app-primary-700"],
@@ -36,6 +36,7 @@ const typography = cva("", {
   defaultVariants: {
     size: "body1",
     weight: "normal",
+    variant: "primary",
   },
 });
 

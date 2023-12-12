@@ -4,6 +4,7 @@
 
 body {
   background-color: #fbfbfb;
+  transition: all 0.7s ease-in-out;
 }
 .container {
   width: 100%;

@@ -31,7 +31,7 @@ const Card = ({
 }: TCard) => {
   return (
     <div
-      className={`bg-primary-100  shadow-md ${
+      className={`bg-primary-100 dark:bg-primary-900 border dark:border-primary-700  shadow-md ${
         variant !== "projectCard" ? "p-6 rounded-3xl" : "p-4 rounded-xl"
       }`}
     >
@@ -94,7 +94,7 @@ const Card = ({
                 link={secondaryActionLink}
                 title={secondaryActiontext}
                 variant="icon"
-                className="gap-1 items-center text-primary-800"
+                className="gap-1 items-center text-primary-800 dark:text-primary-50"
               >
                 {secondaryActiontext}
                 <svg
