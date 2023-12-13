@@ -10,7 +10,7 @@ type TCard = {
   projectLogoSrc?: string | undefined;
   projectScreenshotSrc?: string;
   actionText?: string;
-  actionLink: string;
+  actionLink?: string;
   secondaryActiontext?: string;
   secondaryActionLink?: string;
   variant: "projectCard" | "widgetCard" | "techCard";
@@ -115,7 +115,7 @@ const Card = ({
             ) : null}
           </div>
         </div>
-      ) : (
+      ) : actionLink ? (
         <Link
           href={actionLink}
           className="flex flex-col items-center gap-2 group"
@@ -143,7 +143,7 @@ const Card = ({
             </div>
           ) : null}
         </Link>
-      )}
+      ) : null}
     </div>
   );
 };

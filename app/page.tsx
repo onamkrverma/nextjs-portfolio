@@ -7,7 +7,27 @@ import Card from "@components/Card";
 import aboutVector from "@public/aboutVector.png";
 import techStack from "@public/techStack.png";
 
-const Home = () => {
+type TProject = {
+  logo?: string;
+  title: string;
+  description: string;
+  techUsed: string;
+  thumbnail: string;
+  githubLink: string;
+  demoLink?: string;
+};
+
+async function getProjectData() {
+  const res = await fetch("http://localhost:3000/api/projects");
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+}
+
+const Home = async () => {
   const projectData = [
     {
       id: "1",
@@ -46,6 +66,8 @@ const Home = () => {
       icon: techStack,
     },
   ];
+
+  const projectsData: TProject[] = await getProjectData();
 
   return (
     <main className="container flex flex-col gap-16">
@@ -100,17 +122,17 @@ const Home = () => {
       <section className="flex flex-col gap-4 my-8">
         <Typography size="h3/semi-bold">Selected Work</Typography>
         <div className="flex flex-col gap-8">
-          {projectData.map((data, index) => (
+          {projectsData.map((data, index) => (
             <Card
-              key={data.id}
+              key={data.githubLink}
               title={data.title}
               description={data.description}
-              actionLink={data.demo}
+              actionLink={data.demoLink}
               actionText="Visit Site"
-              secondaryActionLink={data.github}
+              secondaryActionLink={data.githubLink}
               secondaryActiontext="Github"
               projectLogoSrc={undefined}
-              projectScreenshotSrc={data.image}
+              projectScreenshotSrc={data.thumbnail}
               variant="projectCard"
             />
           ))}
