@@ -15,6 +15,7 @@ const config: Config = {
       },
       colors: {
         primary: colors.neutral,
+        danger: colors.red,
       },
       textColor: {},
     },

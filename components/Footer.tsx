@@ -7,6 +7,7 @@ import footerGradient from "../public/footerGradient.svg";
 import { poppins } from "@app/fonts";
 import { useContext } from "react";
 import { ThemeContext } from "@app/contex/ThemeContex";
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -40,9 +41,12 @@ const Footer = () => {
     },
   ];
 
-  return (
+  const currentPath = usePathname();
+
+  return currentPath !== "/dashboard/login" ? (
     <footer className="relative mt-8 pb-8 ">
       <span className="w-full block border border-primary-300 mb-10"></span>
+
       <div className="container">
         <div className="flex justify-between gap-2">
           <div className="hidden sm:block">
@@ -153,6 +157,7 @@ const Footer = () => {
           © 2023 Onam kumar verma. All Rights Reserved.
         </Typography>
       </div>
+
       {/* background gradient */}
       <div className="w-full h-[500px] absolute bottom-0 right-0 -z-10 ">
         <Image
@@ -166,7 +171,7 @@ const Footer = () => {
         />
       </div>
     </footer>
-  );
+  ) : null;
 };
 
 export default Footer;

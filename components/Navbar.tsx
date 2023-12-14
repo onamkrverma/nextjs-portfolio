@@ -92,7 +92,7 @@ const Navbar = () => {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  return (
+  return currentPath !== "/dashboard/login" ? (
     <>
       <header
         className={`hidden sm:block bg-white/25 border-white/50 rounded-xl border backdrop-blur-md dark:bg-primary-900/30 dark:border-white/20 `}
@@ -223,7 +223,7 @@ const Navbar = () => {
         </div>
       </nav>
     </>
-  );
+  ) : null;
 };
 
 export default Navbar;

@@ -11,9 +11,11 @@ type TCard = {
   projectScreenshotSrc?: string;
   actionText?: string;
   actionLink?: string;
+  handleAction?: () => void;
   secondaryActiontext?: string;
+  handleSecondaryAction?: () => void;
   secondaryActionLink?: string;
-  variant: "projectCard" | "widgetCard" | "techCard";
+  variant: "projectCard" | "widgetCard" | "techCard" | "adminProjectCard";
   widgetCardImg?: StaticImageData | string;
 };
 
@@ -25,6 +27,8 @@ const Card = ({
   actionLink,
   secondaryActionLink,
   actionText,
+  handleAction,
+  handleSecondaryAction,
   secondaryActiontext,
   variant,
   widgetCardImg,
@@ -35,10 +39,18 @@ const Card = ({
         variant !== "projectCard" ? "p-6 rounded-3xl" : "p-4 rounded-xl"
       }`}
     >
-      {variant === "projectCard" ? (
+      {variant === "projectCard" || variant === "adminProjectCard" ? (
         <div>
-          <div className="flex justify-between gap-4 flex-col sm:flex-row">
-            <div className="flex flex-col gap-2 sm:w-1/2">
+          <div
+            className={`flex justify-between gap-4 flex-col sm:flex-row ${
+              variant === "adminProjectCard" ? "!flex-col" : ""
+            }`}
+          >
+            <div
+              className={`flex flex-col gap-2 sm:w-1/2 ${
+                variant === "adminProjectCard" ? "!w-full" : ""
+              }`}
+            >
               <Image
                 src={projectLogoSrc ?? placeholderImg}
                 alt="project logo"
@@ -48,70 +60,137 @@ const Card = ({
               />
               <Typography size="h5/semi-bold">{title}</Typography>
               <Typography size="body1/normal" variant="secondary">
-                {description}
+                {variant === "adminProjectCard"
+                  ? description.slice(0, 100) + "..."
+                  : description}
               </Typography>
             </div>
             {projectScreenshotSrc ? (
-              <div className="border p-3 bg-primary-950 rounded-xl shadow-lg shadow-primary-800 w-full sm:w-80 h-fit cursor-pointer transition sm:rotate-12 hover:rotate-0 ">
-                <Image
-                  src={projectScreenshotSrc}
-                  alt="project screenshot"
-                  quality={100}
-                  width={320}
-                  height={320}
-                  className="object-cover w-full h-fit"
-                />
-              </div>
+              variant === "projectCard" ? (
+                <div className="border p-3 bg-primary-950 rounded-xl shadow-lg shadow-primary-800 w-full sm:w-80 h-fit cursor-pointer transition sm:rotate-12 hover:rotate-0 ">
+                  <Image
+                    src={projectScreenshotSrc}
+                    alt="project screenshot"
+                    quality={100}
+                    width={320}
+                    height={320}
+                    className="object-cover w-full h-fit"
+                  />
+                </div>
+              ) : (
+                <div className="w-full h-40">
+                  <Image
+                    src={projectScreenshotSrc}
+                    alt="project screenshot"
+                    quality={100}
+                    width={200}
+                    height={100}
+                    className="object-cover w-full h-full"
+                  />
+                </div>
+              )
             ) : null}
           </div>
           <div className="flex gap-2 items-center mt-8 sm:mt-2">
             {actionText ? (
-              <Button
-                link={actionLink}
-                title={actionText}
-                variant="primary"
-                className="gap-1 items-center !py-2 !shadow-md shadow-primary-600"
-              >
-                {actionText}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 transition hover:translate-x-2"
+              actionLink ? (
+                <Button
+                  link={actionLink}
+                  title={actionText}
+                  variant="primary"
+                  className="gap-1 items-center !py-2 !shadow-md shadow-primary-600"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                  />
-                </svg>
-              </Button>
+                  {actionText}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="w-6 h-6 transition hover:translate-x-2"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                    />
+                  </svg>
+                </Button>
+              ) : (
+                <Button
+                  type="button"
+                  title={actionText}
+                  variant="primary"
+                  className="gap-1 items-center !py-2 !shadow-md shadow-primary-600"
+                  onClick={handleAction}
+                >
+                  {actionText}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="w-6 h-6 transition hover:translate-x-2"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                    />
+                  </svg>
+                </Button>
+              )
             ) : null}
             {secondaryActiontext ? (
-              <Button
-                link={secondaryActionLink}
-                title={secondaryActiontext}
-                variant="icon"
-                className="gap-1 items-center text-primary-800 dark:text-primary-50"
-              >
-                {secondaryActiontext}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 transition hover:translate-x-2"
+              secondaryActionLink ? (
+                <Button
+                  link={secondaryActionLink}
+                  title={secondaryActiontext}
+                  variant={variant === "adminProjectCard" ? "danger" : "icon"}
+                  className="gap-1 items-center text-primary-800 dark:text-primary-50"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                  />
-                </svg>
-              </Button>
+                  {secondaryActiontext}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="w-6 h-6 transition hover:translate-x-2"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                    />
+                  </svg>
+                </Button>
+              ) : (
+                <Button
+                  type="button"
+                  title={secondaryActiontext}
+                  variant={variant === "adminProjectCard" ? "danger" : "icon"}
+                  className="gap-1 items-center text-primary-800 dark:text-primary-50"
+                  onClick={handleSecondaryAction}
+                >
+                  {secondaryActiontext}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="w-6 h-6 transition hover:translate-x-2"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                    />
+                  </svg>
+                </Button>
+              )
             ) : null}
           </div>
         </div>

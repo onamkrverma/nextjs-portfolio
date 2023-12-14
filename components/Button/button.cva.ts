@@ -43,7 +43,7 @@ const button = cva(
           "disabled:bg-danger-300",
           "focus-visible:outline-danger-600",
           "text-white",
-          "py-3 px-4 w-fit",
+          "py-2 px-4 w-fit",
         ],
         icon: ["p-2 !shadow-none"],
         "icon-active": [
