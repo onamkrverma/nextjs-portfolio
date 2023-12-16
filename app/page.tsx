@@ -2,7 +2,6 @@ import Typography from "@components/Typography";
 import Image from "next/image";
 import userImage from "@public/placeholderUser.svg";
 import Button from "@components/Button";
-import { poppins } from "./fonts";
 import Card from "@components/Card";
 import aboutVector from "@public/aboutVector.png";
 import techStack from "@public/techStack.png";
@@ -11,43 +10,17 @@ import { TProject } from "./dashboard/project/project";
 async function getProjectData() {
   const res = await fetch(
     `${process.env.NEXTAUTH_URL}/api/project?search=Okv-Music&search=Okv photogram`,
-    {
-      cache: "no-cache",
-    }
+    { next: { revalidate: 3600 } }
   );
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
-    throw new Error("Failed to fetch data");
+    throw new Error("Failed to fetch project data");
   }
 
   return res.json();
 }
 
 const Home = async () => {
-  const projectData = [
-    {
-      id: "1",
-      title: "Okv-Music",
-      description:
-        "Okv-Music is a progressive music app made with Javascript using React jS and YouTube Api that allows user to discover and listen to new music from around the world. The website features a clean and modern design, a user-friendly interface, and a powerful search feature of youtube.",
-      techUsed:
-        "React.js, Redux toolkit, CSS3, HTML,Youtube Api,Ytdl-core package",
-      image: "https://imgur.com/jZHEXDE.png",
-      github: "https://github.com/onamkrverma/okv-music",
-      demo: "https://okv-music.netlify.app/",
-    },
-    {
-      id: "2",
-      title: "Okv photogram",
-      description:
-        "Okv photogram is a clone of instagram made with React jS and Firebase v9 (Baas) that allows user to post their images,comments and likes. User can explore other user's post and can follow them",
-      techUsed: "React.js, Firebase v9,react-icons, CSS3, HTML.",
-      image: "https://imgur.com/Dr5Qlfg.png",
-      github: "https://github.com/onamkrverma/instagramClone",
-      demo: "https://okv-photogram.netlify.app/",
-    },
-  ];
-
   const widgetCards = [
     {
       id: "1",
@@ -69,17 +42,6 @@ const Home = async () => {
     <main className="container flex flex-col gap-16">
       {/* hero section */}
       <section className="flex flex-col gap-4 ">
-        {/* logo */}
-        <div className="w-full relative text-center block mb-20 sm:hidden">
-          <Button
-            link="/"
-            variant="icon"
-            title="onam"
-            className={`!text-3xl dark:text-white !p-0 !font-bold ${poppins.className}`}
-          >
-            {"<Onam/>"}
-          </Button>
-        </div>
         <div className="flex items-center justify-center gap-4">
           <div className="flex flex-col gap-4 ">
             <Typography

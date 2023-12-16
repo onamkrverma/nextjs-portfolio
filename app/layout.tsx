@@ -3,10 +3,11 @@ import "./globals.css";
 import Navbar from "@components/Navbar";
 import Image from "next/image";
 import topGradient from "@public/topGradient.svg";
-import { inter } from "@app/fonts";
+import { inter, poppins } from "@app/fonts";
 import ThemeProvider from "@app/contex/ThemeContex";
 import dynamic from "next/dynamic";
 import AuthProvider from "@components/AuthProvider";
+import Button from "@components/Button";
 
 export const metadata: Metadata = {
   title: "Onam Portfolio",
@@ -36,6 +37,17 @@ export default function RootLayout({
                   priority
                   className="w-full object-cover blur-2xl"
                 />
+              </div>
+              {/* show logo on mobile */}
+              <div className="w-full relative text-center block mb-20 sm:hidden">
+                <Button
+                  link="/"
+                  variant="icon"
+                  title="onam"
+                  className={`!text-3xl dark:text-white !p-0 !font-bold ${poppins.className}`}
+                >
+                  {"<Onam/>"}
+                </Button>
               </div>
               <Navbar />
               {children}

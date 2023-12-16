@@ -75,7 +75,6 @@ const Card = ({
                       key={index}
                       size="small/normal"
                       variant="secondary"
-                      className="italic"
                     >
                       • {item}
                     </Typography>
