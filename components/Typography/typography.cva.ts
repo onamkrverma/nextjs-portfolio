@@ -8,7 +8,7 @@ const typography = cva("", {
       button: ["text-white font-semibold"],
       error: ["text-sm text-danger-600"],
       "app-primary": ["text-app-primary-700"],
-      success: ["text-success-800"],
+      success: ["text-green-800"],
     },
     size: {
       h1: "text-6xl",

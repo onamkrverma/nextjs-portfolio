@@ -1,46 +1,68 @@
 "use client";
 import Button from "@components/Button";
 import Typography from "@components/Typography";
-import { signOut, useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import Card from "@components/Card";
+import { useEffect, useState } from "react";
+import { TProject } from "./project/project";
+import Loading from "@components/Loading";
+import Popup from "@components/Popup";
 
 const Dashboard = () => {
-  const session = useSession();
-  const projectData = [
-    {
-      id: "1",
-      title: "Okv-Music",
-      description:
-        "Okv-Music is a progressive music app made with Javascript using React jS and YouTube Api that allows user to discover and listen to new music from around the world. The website features a clean and modern design, a user-friendly interface, and a powerful search feature of youtube.",
-      techUsed:
-        "React.js, Redux toolkit, CSS3, HTML,Youtube Api,Ytdl-core package",
-      image: "https://imgur.com/jZHEXDE.png",
-      github: "https://github.com/onamkrverma/okv-music",
-      demo: "https://okv-music.netlify.app/",
-    },
-    {
-      id: "2",
-      title: "Okv photogram",
-      description:
-        "Okv photogram is a clone of instagram made with React jS and Firebase v9 (Baas) that allows user to post their images,comments and likes. User can explore other user's post and can follow them",
-      techUsed: "React.js, Firebase v9,react-icons, CSS3, HTML.",
-      image: "https://imgur.com/Dr5Qlfg.png",
-      github: "https://github.com/onamkrverma/instagramClone",
-      demo: "https://okv-photogram.netlify.app/",
-    },
-  ];
+  const [isDeletePopup, setIsDeletePopup] = useState<boolean>(false);
+  const [projectsData, setProjectsData] = useState<TProject[]>([]);
+  const [isProjectsLoading, setIsProjectsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [selectedProjectId, setSelectedProjectId] = useState<string | null>(
+    null
+  );
 
-  // if (session.status === "loading") {
-  //   return (
-  //     <div className="h-40">
-  //       <Loading loadingText="Loading" />
-  //     </div>
-  //   );
-  // }
+  const getProjects = async () => {
+    setIsProjectsLoading(true);
+    try {
+      const res = await fetch(`/api/project`);
+      const data = await res.json();
+      setProjectsData(data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsProjectsLoading(false);
+    }
+  };
 
-  // if (session.status === "unauthenticated") {
-  //   redirect("/dashboard/login");
-  // }
+  useEffect(() => {
+    getProjects();
+  }, []);
+
+  // handle delete project
+  const handleDelete = async () => {
+    setIsLoading(true);
+    setErrorMessage(null);
+    try {
+      if (!selectedProjectId) return;
+      const res = await fetch(`/api/project/${selectedProjectId}`, {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+        },
+        credentials: "include",
+      });
+      if (!res.ok) {
+        throw new Error("Failed to delete project");
+      }
+      setIsDeletePopup(false);
+      setSelectedProjectId(null);
+      getProjects();
+    } catch (error) {
+      console.log(error);
+      if (error instanceof Error) {
+        setErrorMessage(error.message);
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <main className="container !pr-0">
@@ -75,27 +97,54 @@ const Dashboard = () => {
         </Button>
       </div>
       <div className="flex flex-col gap-4 my-8">
-        <Button type="button" title="Add Project">
+        <Button title="Add Project" link="/dashboard/project">
           Add Project
         </Button>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projectData.map((data, index) => (
-            <Card
-              key={data.github}
-              title={data.title}
-              description={data.description}
-              actionText="Edit"
-              handleAction={() => {}}
-              handleSecondaryAction={() => {}}
-              secondaryActiontext="Delete"
-              projectLogoSrc={undefined}
-              projectScreenshotSrc={data.image}
-              variant="adminProjectCard"
-            />
-          ))}
-        </div>
+        {!isProjectsLoading ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projectsData?.length ? (
+              projectsData.map((data, index) => (
+                <Card
+                  key={data._id}
+                  title={data.title}
+                  description={data.description}
+                  actionText="Edit"
+                  actionLink={`/dashboard/project/${data._id}`}
+                  handleSecondaryAction={() => {
+                    setIsDeletePopup(true), setSelectedProjectId(data._id);
+                  }}
+                  secondaryActiontext="Delete"
+                  projectLogoSrc={undefined}
+                  projectScreenshotSrc={data.thumbnail}
+                  variant="adminProjectCard"
+                />
+              ))
+            ) : (
+              <Typography>No Data found</Typography>
+            )}
+          </div>
+        ) : (
+          <div className="h-40">
+            <Loading loadingText="loading" />
+          </div>
+        )}
       </div>
+
+      <Popup
+        isPopup={isDeletePopup}
+        setIsPopup={setIsDeletePopup}
+        actionText={"No"}
+        handleAction={() => {
+          setIsDeletePopup(false), setSelectedProjectId(null);
+        }}
+        handleSecondaryAction={handleDelete}
+        secondaryActiontext={"Yes,Sure"}
+        title={"Are you sure want to delete this project?"}
+        subtitle={`This will permanently delete project ID: ${selectedProjectId}`}
+        isLoading={isLoading}
+        errorMessage={errorMessage}
+      />
     </main>
   );
 };

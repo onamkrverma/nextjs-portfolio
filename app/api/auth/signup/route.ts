@@ -7,13 +7,6 @@ export const POST = async (req: Request) => {
   const { name, email, password } = await req.json();
   await connectDB();
   try {
-    console.log({ name, email, password });
-    if (!name || !email || !password) {
-      return NextResponse.json(
-        { error: "name, email and password are required" },
-        { status: 422 }
-      );
-    }
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
@@ -31,8 +24,14 @@ export const POST = async (req: Request) => {
     });
     return NextResponse.json(newAdmin, { status: 201 });
   } catch (error: any) {
-    console.log(error);
-    console.error(error.message);
-    return new NextResponse(error.message, { status: 500 });
+    console.log(error.message);
+    if (error.name === "ValidationError") {
+      return NextResponse.json({ error: error.message }, { status: 422 });
+    }
+
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 }
+    );
   }
 };

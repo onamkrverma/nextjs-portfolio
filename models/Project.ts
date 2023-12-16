@@ -6,29 +6,36 @@ const ProjectSchema = new Schema(
   {
     logo: {
       type: String,
+      trim: true,
     },
     title: {
       type: String,
-      require: true,
+      required: [true, "title is required!"],
+      trim: true,
     },
     description: {
       type: String,
-      require: true,
+      required: [true, "description is required!"],
+      trim: true,
     },
     techUsed: {
       type: String,
-      require: true,
+      required: [true, "techUsed is required!"],
+      trim: true,
     },
     thumbnail: {
       type: String,
-      require: true,
+      required: [true, "thumbnail is required!"],
+      trim: true,
     },
     githubLink: {
       type: String,
-      require: true,
+      required: [true, "githubLink is required!"],
+      trim: true,
     },
     demoLink: {
       type: String,
+      trim: true,
     },
   },
   { timestamps: true }

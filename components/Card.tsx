@@ -16,6 +16,7 @@ type TCard = {
   handleSecondaryAction?: () => void;
   secondaryActionLink?: string;
   variant: "projectCard" | "widgetCard" | "techCard" | "adminProjectCard";
+  techUsed?: string;
   widgetCardImg?: StaticImageData | string;
 };
 
@@ -31,6 +32,7 @@ const Card = ({
   handleSecondaryAction,
   secondaryActiontext,
   variant,
+  techUsed,
   widgetCardImg,
 }: TCard) => {
   return (
@@ -40,7 +42,7 @@ const Card = ({
       }`}
     >
       {variant === "projectCard" || variant === "adminProjectCard" ? (
-        <div>
+        <div className="flex flex-col gap-4">
           <div
             className={`flex justify-between gap-4 flex-col sm:flex-row ${
               variant === "adminProjectCard" ? "!flex-col" : ""
@@ -64,6 +66,22 @@ const Card = ({
                   ? description.slice(0, 100) + "..."
                   : description}
               </Typography>
+
+              {variant === "projectCard" ? (
+                <div>
+                  <Typography size="body1/semi-bold">Tech Used</Typography>
+                  {techUsed?.split(",")?.map((item, index) => (
+                    <Typography
+                      key={index}
+                      size="small/normal"
+                      variant="secondary"
+                      className="italic"
+                    >
+                      • {item}
+                    </Typography>
+                  ))}
+                </div>
+              ) : null}
             </div>
             {projectScreenshotSrc ? (
               variant === "projectCard" ? (
@@ -78,13 +96,14 @@ const Card = ({
                   />
                 </div>
               ) : (
-                <div className="w-full h-40">
+                <div className="w-full h-40 border p-3 bg-primary-950 rounded-xl shadow-lg shadow-primary-800">
                   <Image
                     src={projectScreenshotSrc}
                     alt="project screenshot"
                     quality={100}
                     width={200}
                     height={100}
+                    priority
                     className="object-cover w-full h-full"
                   />
                 </div>
@@ -148,7 +167,9 @@ const Card = ({
                   link={secondaryActionLink}
                   title={secondaryActiontext}
                   variant={variant === "adminProjectCard" ? "danger" : "icon"}
-                  className="gap-1 items-center text-primary-800 dark:text-primary-50"
+                  className={`gap-1 items-center text-primary-800 dark:text-primary-50 ${
+                    variant === "adminProjectCard" ? "!py-2" : ""
+                  }`}
                 >
                   {secondaryActiontext}
                   <svg
@@ -171,7 +192,9 @@ const Card = ({
                   type="button"
                   title={secondaryActiontext}
                   variant={variant === "adminProjectCard" ? "danger" : "icon"}
-                  className="gap-1 items-center text-primary-800 dark:text-primary-50"
+                  className={`gap-1 items-center text-primary-800 dark:text-primary-50 ${
+                    variant === "adminProjectCard" ? "!py-2" : ""
+                  }`}
                   onClick={handleSecondaryAction}
                 >
                   {secondaryActiontext}

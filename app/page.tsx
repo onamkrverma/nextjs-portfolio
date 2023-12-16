@@ -6,19 +6,15 @@ import { poppins } from "./fonts";
 import Card from "@components/Card";
 import aboutVector from "@public/aboutVector.png";
 import techStack from "@public/techStack.png";
-
-type TProject = {
-  logo?: string;
-  title: string;
-  description: string;
-  techUsed: string;
-  thumbnail: string;
-  githubLink: string;
-  demoLink?: string;
-};
+import { TProject } from "./dashboard/project/project";
 
 async function getProjectData() {
-  const res = await fetch("http://localhost:3000/api/projects");
+  const res = await fetch(
+    `${process.env.NEXTAUTH_URL}/api/project?search=Okv-Music&search=Okv photogram`,
+    {
+      cache: "no-cache",
+    }
+  );
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error("Failed to fetch data");
@@ -124,7 +120,7 @@ const Home = async () => {
         <div className="flex flex-col gap-8">
           {projectsData.map((data, index) => (
             <Card
-              key={data.githubLink}
+              key={data._id}
               title={data.title}
               description={data.description}
               actionLink={data.demoLink}
@@ -133,6 +129,7 @@ const Home = async () => {
               secondaryActiontext="Github"
               projectLogoSrc={undefined}
               projectScreenshotSrc={data.thumbnail}
+              techUsed={data.techUsed}
               variant="projectCard"
             />
           ))}

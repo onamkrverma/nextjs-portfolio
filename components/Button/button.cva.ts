@@ -7,8 +7,8 @@ const button = cva(
       variant: {
         primary: [
           "bg-primary-800",
-          "focus:bg-primary-900",
-          "hover:bg-primary-900",
+          "focus:bg-primary-950",
+          "hover:bg-primary-950",
           "disabled:bg-primary-500",
           "disabled:pointer-events-none",
           "disabled:select-none",
@@ -29,13 +29,6 @@ const button = cva(
           "border border-primary-700",
           "px-4 py-2 w-fit",
         ],
-        dropDown: [
-          "bg-secondary",
-          "hover:bg-gray-50",
-          "disabled:bg-secondary-200",
-          "text-primary-600",
-          "px-4 py-2 w-full",
-        ],
         danger: [
           "bg-danger-600",
           "focus:bg-danger-600",
@@ -43,7 +36,7 @@ const button = cva(
           "disabled:bg-danger-300",
           "focus-visible:outline-danger-600",
           "text-white",
-          "py-2 px-4 w-fit",
+          "py-3 px-4 w-fit",
         ],
         icon: ["p-2 !shadow-none"],
         "icon-active": [

@@ -6,16 +6,19 @@ const AdminSchema = new Schema(
   {
     name: {
       type: String,
-      require: [true, "name is required!"],
+      required: [true, "name is required!"],
+      trim: true,
     },
     email: {
       type: String,
       unique: true,
-      require: [true, "email is required!"],
+      required: [true, "email is required!"],
+      trim: true,
     },
     password: {
       type: String,
-      require: [true, "password is required!"],
+      required: [true, "password is required!"],
+      trim: true,
     },
   },
   { timestamps: true }
