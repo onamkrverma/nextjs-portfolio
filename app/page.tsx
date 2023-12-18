@@ -1,11 +1,11 @@
 import Typography from "@components/Typography";
 import Image from "next/image";
-import userImage from "@public/placeholderUser.svg";
 import Button from "@components/Button";
 import Card from "@components/Card";
 import aboutVector from "@public/aboutVector.png";
 import techStack from "@public/techStack.png";
 import { TProject } from "./dashboard/project/project";
+import onamImg from "@public/onam.png";
 
 async function getProjectData() {
   const res = await fetch(
@@ -41,9 +41,9 @@ const Home = async () => {
   return (
     <main className="container flex flex-col gap-16">
       {/* hero section */}
-      <section className="flex flex-col gap-4 ">
+      <section className="flex flex-col gap-4 mb-12">
         <div className="flex items-center justify-center gap-4">
-          <div className="flex flex-col gap-4 ">
+          <div className="flex flex-col gap-4 sm:w-10/12 md:w-full">
             <Typography
               tag="h1"
               size="h2/bold"
@@ -63,8 +63,20 @@ const Home = async () => {
             </Typography>
           </div>
           {/* image */}
-          <div className=" hidden sm:block">
-            <Image src={userImage} alt="onam" width={300} height={400} />
+          <div className="hidden sm:block w-full h-80 relative">
+            <div
+              className="absolute -top-8 right-0 sm:w-[300px] sm:h-[350px]  lg:w-[400px] lg:h-[450px] rounded-b-[20%] cursor-pointer transition ease-in-out duration-500 hover:scale-110"
+              style={{ filter: "drop-shadow(0px 11px 27px gray)" }}
+            >
+              <Image
+                src={onamImg}
+                alt="onam"
+                width={300}
+                height={200}
+                quality={100}
+                className="w-full h-full object-cover rounded-b-[20%] "
+              />
+            </div>
           </div>
         </div>
         <Button
@@ -77,7 +89,7 @@ const Home = async () => {
       </section>
 
       {/* selected work */}
-      <section className="flex flex-col gap-4 my-8">
+      <section className="flex flex-col gap-4 my-8 mt-16">
         <Typography size="h3/semi-bold">Selected Work</Typography>
         <div className="flex flex-col gap-8">
           {projectsData.map((data, index) => (

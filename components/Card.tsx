@@ -18,6 +18,7 @@ type TCard = {
   variant: "projectCard" | "widgetCard" | "techCard" | "adminProjectCard";
   techUsed?: string;
   widgetCardImg?: StaticImageData | string;
+  techStackIcon?: JSX.Element;
 };
 
 const Card = ({
@@ -34,12 +35,13 @@ const Card = ({
   variant,
   techUsed,
   widgetCardImg,
+  techStackIcon,
 }: TCard) => {
   return (
     <div
       className={`bg-primary-100 dark:bg-primary-900 border dark:border-primary-700  shadow-md ${
         variant !== "projectCard" ? "p-6 rounded-3xl" : "p-4 rounded-xl"
-      }`}
+      } ${variant === "techCard" ? "!p-2 rounded-3xl" : ""}`}
     >
       {variant === "projectCard" || variant === "adminProjectCard" ? (
         <div className="flex flex-col gap-4">
@@ -217,33 +219,73 @@ const Card = ({
           </div>
         </div>
       ) : actionLink ? (
-        <Link
-          href={actionLink}
-          className="flex flex-col items-center gap-2 group"
-        >
-          <div className="flex flex-col items-center gap-2">
-            <Typography size="h5/semi-bold">{title}</Typography>
-            <Typography size="body1/normal" variant="secondary">
-              {description}
-            </Typography>
-          </div>
-          {widgetCardImg ? (
-            <div
-              className={`transition w-full  ease-in-out duration-500 group-hover:scale-105 ${
-                title.includes("About") ? "group-hover:-rotate-6" : ""
-              }`}
-            >
-              <Image
-                src={widgetCardImg}
-                alt="widgetCard"
-                quality={100}
-                width={200}
-                height={300}
-                className="object-cover w-full"
-              />
+        variant === "widgetCard" ? (
+          <Link
+            href={actionLink}
+            className="flex flex-col items-center gap-2 group"
+          >
+            <div className="flex flex-col items-center gap-2">
+              <Typography size="h5/semi-bold">{title}</Typography>
+              <Typography size="body1/normal" variant="secondary">
+                {description}
+              </Typography>
             </div>
-          ) : null}
-        </Link>
+            {widgetCardImg ? (
+              <div
+                className={`transition w-full  ease-in-out duration-500 group-hover:scale-105 ${
+                  title.includes("About") ? "group-hover:-rotate-6" : ""
+                }`}
+              >
+                <Image
+                  src={widgetCardImg}
+                  alt="widgetCard"
+                  quality={100}
+                  width={200}
+                  height={300}
+                  className="object-cover w-full"
+                />
+              </div>
+            ) : null}
+          </Link>
+        ) : (
+          <Link
+            href={actionLink}
+            className="flex flex-row sm:flex-col items-center gap-4 relative group"
+          >
+            {techStackIcon ? (
+              <div className="flex justify-center items-center transition w-full  ease-in-out duration-500 group-hover:scale-105">
+                <span className="hidden absolute -top-3 -right-3 group-hover:block ">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="w-6 h-6 rotate-45"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75"
+                    />
+                  </svg>
+                </span>
+                {techStackIcon}
+              </div>
+            ) : null}
+
+            <div className="flex justify-between  gap-2 flex-wrap items-center w-full">
+              <Typography size="body1/semi-bold">{title}</Typography>
+              <Typography
+                size="body2/normal"
+                variant="secondary"
+                className="border capitalize bg-white dark:bg-primary-800 rounded-2xl px-3 py-1"
+              >
+                {description}
+              </Typography>
+            </div>
+          </Link>
+        )
       ) : null}
     </div>
   );
