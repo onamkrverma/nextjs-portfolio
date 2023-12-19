@@ -138,7 +138,7 @@ const Navbar = () => {
                   key={index}
                   href={navLink.link}
                   title={navLink.title}
-                  className="text-primary-600 dark:text-primary-50 font-medium hover:text-primary-900"
+                  className="text-primary-600 dark:text-primary-50  hover:text-primary-900"
                 >
                   {navLink.title}
                 </Link>
@@ -237,7 +237,7 @@ const Navbar = () => {
               link={item.link}
               variant="icon"
               title={item.title}
-              className={`!rounded-lg px-3 dark:text-primary-300 ${
+              className={`!rounded-lg  dark:text-primary-300 ${
                 currentPath === item.link ? "bg-primary-600 !text-white" : ""
               }`}
             >

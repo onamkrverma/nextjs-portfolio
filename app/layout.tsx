@@ -44,7 +44,7 @@ export default function RootLayout({
                   link="/"
                   variant="icon"
                   title="onam"
-                  className={`!text-3xl dark:text-white !p-0 !font-bold ${poppins.className}`}
+                  className={`!text-4xl dark:text-white !p-0 !font-bold ${poppins.className}`}
                 >
                   {"<Onam/>"}
                 </Button>

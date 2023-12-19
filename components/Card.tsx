@@ -41,7 +41,7 @@ const Card = ({
     <div
       className={`bg-primary-100 dark:bg-primary-900 border dark:border-primary-700  shadow-md ${
         variant !== "projectCard" ? "p-6 rounded-3xl" : "p-4 rounded-xl"
-      } ${variant === "techCard" ? "!p-2 rounded-3xl" : ""}`}
+      } ${variant === "techCard" ? "!p-2 sm:!p-4 rounded-3xl" : ""}`}
     >
       {variant === "projectCard" || variant === "adminProjectCard" ? (
         <div className="flex flex-col gap-4">
@@ -250,18 +250,19 @@ const Card = ({
         ) : (
           <Link
             href={actionLink}
+            target="_blank"
             className="flex flex-row sm:flex-col items-center gap-4 relative group"
           >
             {techStackIcon ? (
               <div className="flex justify-center items-center transition w-full  ease-in-out duration-500 group-hover:scale-105">
-                <span className="hidden absolute -top-3 -right-3 group-hover:block ">
+                <span className="hidden absolute -top-1 -right-1 group-hover:block ">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor"
-                    className="w-6 h-6 rotate-45"
+                    className="w-6 h-6 rotate-45 hidden sm:block dark:stroke-primary-50"
                   >
                     <path
                       strokeLinecap="round"
@@ -274,7 +275,7 @@ const Card = ({
               </div>
             ) : null}
 
-            <div className="flex justify-between  gap-2 flex-wrap items-center w-full">
+            <div className="flex justify-between flex-col  gap-2  items-center w-full">
               <Typography size="body1/semi-bold">{title}</Typography>
               <Typography
                 size="body2/normal"
