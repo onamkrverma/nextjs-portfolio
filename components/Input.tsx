@@ -24,7 +24,7 @@ const Input = ({ label, leftAdornment, className, ...rest }: Props) => {
       {label ? (
         <label
           htmlFor={id}
-          className="text-sm font-medium leading-6 text-gray-900 flex gap-1 mb-1"
+          className="text-sm font-medium leading-6 text-gray-900 dark:text-primary-50 flex gap-1 mb-1"
         >
           {label}
         </label>

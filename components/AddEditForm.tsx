@@ -27,7 +27,7 @@ const AddEditForm = ({
   formRef,
 }: TAddEditForm) => {
   return (
-    <div className="w-full my-6 max-w-xl p-4 bg-primary-100 shadow-md rounded-lg">
+    <div className="w-full my-6 max-w-xl p-4 bg-primary-100 dark:bg-primary-900 shadow-md rounded-lg">
       <form
         className="w-full flex flex-col gap-4 "
         onSubmit={handleSubmit}
@@ -97,7 +97,7 @@ const AddEditForm = ({
         {statusMessage ? (
           <Typography
             variant={statusMessage.variant}
-            className="my-4 text-center"
+            className="my-4 text-center dark:bg-primary-200"
           >
             {statusMessage.variant === "error" ? "❌" : "✅"}{" "}
             {statusMessage.message}

@@ -6,7 +6,7 @@ import { TProject } from "../project";
 
 const EditProduct = ({ params }: { params: { id: string } }) => {
   const [projectData, setProjectData] = useState<TProject | null>(null);
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [statusMessage, setStatusMessage] = useState<{
     variant: "error" | "success";
     message: string;
@@ -29,7 +29,7 @@ const EditProduct = ({ params }: { params: { id: string } }) => {
 
   const handleUpdate = async (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
+    setIsLoading(true);
     setStatusMessage(null);
     try {
       if (formRef.current) {
@@ -75,7 +75,7 @@ const EditProduct = ({ params }: { params: { id: string } }) => {
         setStatusMessage({ variant: "error", message: error.message });
       }
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 

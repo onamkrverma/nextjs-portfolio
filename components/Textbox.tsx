@@ -5,16 +5,24 @@ interface Props extends HTMLAttributes<HTMLTextAreaElement> {
   label: string;
   name: string;
   required?: boolean;
+  minLength?: number;
 }
 
-const Textbox = ({ label, name, required, className, ...rest }: Props) => {
+const Textbox = ({
+  label,
+  name,
+  minLength,
+  required,
+  className,
+  ...rest
+}: Props) => {
   const id = useId();
 
   return (
     <div className="w-full">
       <label
         htmlFor={id}
-        className="text-sm font-medium leading-6 text-gray-900 flex gap-1 mb-1"
+        className="text-sm font-medium leading-6 text-gray-900 dark:text-primary-50 flex gap-1 mb-1"
       >
         {label}
       </label>
@@ -29,6 +37,7 @@ const Textbox = ({ label, name, required, className, ...rest }: Props) => {
         )}
         rows={4}
         cols={50}
+        minLength={minLength}
         placeholder={label}
         {...rest}
         required={required}

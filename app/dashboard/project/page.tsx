@@ -5,7 +5,7 @@ import Typography from "@components/Typography";
 import { ChangeEvent, useRef, useState } from "react";
 
 const AddProject = () => {
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [statusMessage, setStatusMessage] = useState<{
     variant: "error" | "success";
     message: string;
@@ -14,7 +14,7 @@ const AddProject = () => {
 
   const handleAdd = async (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
+    setIsLoading(true);
     setStatusMessage(null);
     try {
       if (formRef.current) {
@@ -61,7 +61,7 @@ const AddProject = () => {
         setStatusMessage({ variant: "error", message: error.message });
       }
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 

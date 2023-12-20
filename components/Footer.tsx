@@ -19,25 +19,25 @@ const Footer = () => {
     },
     {
       title: "About",
-      link: "#",
+      link: "/about",
     },
     {
       title: "Projects",
-      link: "#",
+      link: "/projects",
     },
     {
       title: "Contact",
-      link: "#",
+      link: "/contact",
     },
   ];
   const socialLinks = [
     {
       title: "Github",
-      link: "#",
+      link: "https://github.com/onamkrverma",
     },
     {
       title: "Linkedin",
-      link: "#",
+      link: "https://linkedin.com/in/onamkumarverma",
     },
   ];
 
