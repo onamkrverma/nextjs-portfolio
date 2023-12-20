@@ -1,6 +1,11 @@
 import { TProject } from "@app/dashboard/project/project";
 import Card from "@components/Card";
 import Typography from "@components/Typography";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Projects | Onam - Front End Developer",
+};
 
 async function getProjectData() {
   const res = await fetch(`${process.env.NEXTAUTH_URL}/api/project`, {
@@ -55,9 +60,10 @@ const Projects = async () => {
             Professional
           </Typography>
           <Typography size="body2/normal" variant="secondary">
-            *I have built some confidential projects for client and i respect
-            client's privacy, So i cannot disclose their projects here. In
-            future if i built public project then i will share here.
+            *I have built some confidential projects for client and Due to
+            client confidentiality, I cannot reveal the projects I have built
+            for them. However, I will share any public projects I create in the
+            future.
           </Typography>
         </div>
       </div>

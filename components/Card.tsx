@@ -56,7 +56,7 @@ const Card = ({
               }`}
             >
               <Image
-                src={projectLogoSrc ?? placeholderImg}
+                src={projectLogoSrc || placeholderImg}
                 alt="project logo"
                 width={30}
                 height={30}

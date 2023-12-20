@@ -2,24 +2,11 @@
 import Button from "@components/Button";
 import Input from "@components/Input";
 import Typography from "@components/Typography";
-import { SignInResponse, signIn, useSession } from "next-auth/react";
-import { redirect, useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 import { ChangeEvent, useState } from "react";
 
 const Login = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const session = useSession();
-
-  // if (session.status === "loading") {
-  //   return (
-  //     <div className="h-40">
-  //       <Loading loadingText="Loading" />
-  //     </div>
-  //   );
-  // }
-  // if (session.status === "authenticated") {
-  //   return redirect("/dashboard");
-  // }
 
   const handleLoginAdmin = async (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();

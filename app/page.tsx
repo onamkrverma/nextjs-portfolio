@@ -27,12 +27,14 @@ const Home = async () => {
       title: "About me",
       subtitle: "Who I am and what I do",
       icon: aboutVector,
+      link: "/about",
     },
     {
       id: "2",
       title: "Tech Stack",
       subtitle: "The dev tools and tech stack I use",
       icon: techStack,
+      link: "/techstack",
     },
   ];
 
@@ -56,10 +58,9 @@ const Home = async () => {
               <span className="text-primary-500">I'm</span> Onam Kumar Verma
             </Typography>
             <Typography size="body1/normal" variant="secondary">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-              pariatur animi temporibus impedit dolorem saepe, vero ipsa
-              distinctio illum, dicta minima? Harum quidem vero asperiores
-              fugiat officia deleniti doloremque architecto.
+              As a front-end developer, I assist emerging businesses in
+              achieving their digital aspirations. I specialize in developing
+              modern web applications.
             </Typography>
           </div>
           {/* image */}
@@ -71,8 +72,6 @@ const Home = async () => {
               <Image
                 src={onamImg}
                 alt="onam"
-                width={300}
-                height={200}
                 quality={100}
                 className="w-full h-full object-cover rounded-b-[20%] "
               />
@@ -101,7 +100,7 @@ const Home = async () => {
               actionText="Visit Site"
               secondaryActionLink={data.githubLink}
               secondaryActiontext="Github"
-              projectLogoSrc={undefined}
+              projectLogoSrc={data.logo}
               projectScreenshotSrc={data.thumbnail}
               techUsed={data.techUsed}
               variant="projectCard"
@@ -121,7 +120,7 @@ const Home = async () => {
               description={widget.subtitle}
               widgetCardImg={widget.icon}
               variant="widgetCard"
-              actionLink="#"
+              actionLink={widget.link}
             />
           ))}
         </div>
@@ -137,6 +136,7 @@ const Home = async () => {
           </Typography>
         </div>
         <Button
+          link="/contact"
           title="connect"
           className="items-center gap-2 !w-full sm:!w-fit"
         >

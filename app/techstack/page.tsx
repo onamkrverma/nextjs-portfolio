@@ -1,6 +1,11 @@
 import Card from "@components/Card";
 import Typography from "@components/Typography";
 import { TechStackList } from "./techStackList";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "TechStack | Onam - Front End Developer",
+};
 
 const TechStack = () => {
   return (

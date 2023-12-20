@@ -115,7 +115,7 @@ const Dashboard = () => {
                     setIsDeletePopup(true), setSelectedProjectId(data._id);
                   }}
                   secondaryActiontext="Delete"
-                  projectLogoSrc={undefined}
+                  projectLogoSrc={data.logo}
                   projectScreenshotSrc={data.thumbnail}
                   variant="adminProjectCard"
                 />
