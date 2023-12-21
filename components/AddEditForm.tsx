@@ -5,6 +5,7 @@ import Input from "./Input";
 import Textbox from "./Textbox";
 import Typography from "./Typography";
 import { ChangeEvent, RefObject } from "react";
+import Select from "./Select";
 
 type TAddEditForm = {
   isLoading: boolean;
@@ -45,6 +46,12 @@ const AddEditForm = ({
           label="Description"
           defaultValue={projectData?.description}
           required
+        />
+        <Select
+          name="tag"
+          label="Select tag"
+          options={["personal", "professional"]}
+          value={projectData?.tag}
         />
         <Input
           type="text"

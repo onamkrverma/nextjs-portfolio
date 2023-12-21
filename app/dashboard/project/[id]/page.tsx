@@ -43,6 +43,7 @@ const EditProduct = ({ params }: { params: { id: string } }) => {
           logo,
           githubLink,
           demoLink,
+          tag,
         } = formDataObj;
 
         const res = await fetch(`/api/project/${params.id}`, {
@@ -59,6 +60,7 @@ const EditProduct = ({ params }: { params: { id: string } }) => {
             logo,
             githubLink,
             demoLink,
+            tag,
           }),
         });
         if (!res.ok) {

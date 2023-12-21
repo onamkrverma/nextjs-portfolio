@@ -7,10 +7,13 @@ export const metadata: Metadata = {
   title: "Projects | Onam - Front End Developer",
 };
 
-async function getProjectData() {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/project`, {
-    next: { revalidate: 3600 },
-  });
+async function getPersonalProjectData() {
+  const res = await fetch(
+    `${process.env.NEXTAUTH_URL}/api/project?tag=personal`,
+    {
+      next: { revalidate: 3600 },
+    }
+  );
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error("Failed to fetch project data");
@@ -20,7 +23,7 @@ async function getProjectData() {
 }
 
 const Projects = async () => {
-  const projectsData: TProject[] = await getProjectData();
+  const personalProjectsData: TProject[] = await getPersonalProjectData();
 
   return (
     <main className="container">
@@ -38,7 +41,7 @@ const Projects = async () => {
           Personal
         </Typography>
         <div className="flex flex-col gap-8 mb-4 ">
-          {projectsData.map((data, index) => (
+          {personalProjectsData.map((data, index) => (
             <Card
               key={data._id}
               title={data.title}

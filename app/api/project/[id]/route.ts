@@ -42,6 +42,7 @@ export const PUT = async (
     thumbnail,
     githubLink,
     demoLink,
+    tag,
   } = await req.json();
 
   try {
@@ -69,6 +70,7 @@ export const PUT = async (
       thumbnail,
       githubLink,
       demoLink,
+      tag,
     };
     const updateProject = await Project.findByIdAndUpdate(
       id,

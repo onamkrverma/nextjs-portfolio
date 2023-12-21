@@ -37,6 +37,12 @@ const ProjectSchema = new Schema(
       type: String,
       trim: true,
     },
+    tag: {
+      type: String,
+      enum: ["personal", "professional"],
+      required: [true, "tag is required!"],
+      trim: true,
+    },
   },
   { timestamps: true }
 );

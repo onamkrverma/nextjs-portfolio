@@ -28,6 +28,7 @@ const AddProject = () => {
           logo,
           githubLink,
           demoLink,
+          tag,
         } = formDataObj;
 
         const res = await fetch(`/api/project`, {
@@ -44,6 +45,7 @@ const AddProject = () => {
             logo,
             githubLink,
             demoLink,
+            tag,
           }),
         });
         if (!res.ok) {
