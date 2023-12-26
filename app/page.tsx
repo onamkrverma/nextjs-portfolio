@@ -79,9 +79,9 @@ const Home = async () => {
           </div>
         </div>
         <Button
-          type="button"
+          link="/contact"
           title="Get in touch"
-          className="!w-full sm:!w-fit"
+          className="!w-full sm:!w-fit hover:bg-primary-700"
         >
           Get in touch
         </Button>

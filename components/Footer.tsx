@@ -170,6 +170,30 @@ const Footer = () => {
           className="w-full object-cover blur-2xl"
         />
       </div>
+      <Typography
+        size="small/normal"
+        variant="secondary"
+        className="text-center"
+      >
+        UI Design by{" "}
+        <a
+          href="https://www.linkedin.com/in/eihab-khan/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline"
+        >
+          Eihab Khan
+        </a>{" "}
+        and Develop by{" "}
+        <a
+          href="https://linkedin.com/in/onamkumarverma"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline"
+        >
+          Onamkrverma
+        </a>
+      </Typography>
     </footer>
   ) : null;
 };
