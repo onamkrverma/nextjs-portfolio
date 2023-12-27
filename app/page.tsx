@@ -91,21 +91,25 @@ const Home = async () => {
       <section className="flex flex-col gap-4 my-8 mt-16">
         <Typography size="h3/semi-bold">Selected Work</Typography>
         <div className="flex flex-col gap-8">
-          {projectsData.map((data, index) => (
-            <Card
-              key={data._id}
-              title={data.title}
-              description={data.description}
-              actionLink={data.demoLink}
-              actionText="Visit Site"
-              secondaryActionLink={data.githubLink}
-              secondaryActiontext="Github"
-              projectLogoSrc={data.logo}
-              projectScreenshotSrc={data.thumbnail}
-              techUsed={data.techUsed}
-              variant="projectCard"
-            />
-          ))}
+          {projectsData.length ? (
+            projectsData.map((data, index) => (
+              <Card
+                key={data._id}
+                title={data.title}
+                description={data.description}
+                actionLink={data.demoLink}
+                actionText="Visit Site"
+                secondaryActionLink={data.githubLink}
+                secondaryActiontext="Github"
+                projectLogoSrc={data.logo}
+                projectScreenshotSrc={data.thumbnail}
+                techUsed={data.techUsed}
+                variant="projectCard"
+              />
+            ))
+          ) : (
+            <Typography>No Data found</Typography>
+          )}
         </div>
       </section>
 

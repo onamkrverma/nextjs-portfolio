@@ -8,4 +8,5 @@ export type TProject = {
   githubLink: string;
   demoLink?: string;
   tag: "personal" | "professional";
+  createdAt: string;
 };

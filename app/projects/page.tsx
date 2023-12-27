@@ -41,21 +41,30 @@ const Projects = async () => {
           Personal
         </Typography>
         <div className="flex flex-col gap-8 mb-4 ">
-          {personalProjectsData.map((data, index) => (
-            <Card
-              key={data._id}
-              title={data.title}
-              description={data.description}
-              actionLink={data.demoLink}
-              actionText="Visit Site"
-              secondaryActionLink={data.githubLink}
-              secondaryActiontext="Github"
-              projectLogoSrc={undefined}
-              projectScreenshotSrc={data.thumbnail}
-              techUsed={data.techUsed}
-              variant="projectCard"
-            />
-          ))}
+          {personalProjectsData.length ? (
+            personalProjectsData
+              .sort(
+                (a, b) =>
+                  Number(new Date(b.createdAt)) - Number(new Date(a.createdAt))
+              )
+              .map((data, index) => (
+                <Card
+                  key={data._id}
+                  title={data.title}
+                  description={data.description}
+                  actionLink={data.demoLink}
+                  actionText="Visit Site"
+                  secondaryActionLink={data.githubLink}
+                  secondaryActiontext="Github"
+                  projectLogoSrc={undefined}
+                  projectScreenshotSrc={data.thumbnail}
+                  techUsed={data.techUsed}
+                  variant="projectCard"
+                />
+              ))
+          ) : (
+            <Typography>No Data found</Typography>
+          )}
         </div>
 
         <div className="flex flex-col gap-2 ">

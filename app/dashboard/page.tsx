@@ -104,22 +104,28 @@ const Dashboard = () => {
         {!isProjectsLoading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {projectsData?.length ? (
-              projectsData.map((data, index) => (
-                <Card
-                  key={data._id}
-                  title={data.title}
-                  description={data.description}
-                  actionText="Edit"
-                  actionLink={`/dashboard/project/${data._id}`}
-                  handleSecondaryAction={() => {
-                    setIsDeletePopup(true), setSelectedProjectId(data._id);
-                  }}
-                  secondaryActiontext="Delete"
-                  projectLogoSrc={data.logo}
-                  projectScreenshotSrc={data.thumbnail}
-                  variant="adminProjectCard"
-                />
-              ))
+              projectsData
+                .sort(
+                  (a, b) =>
+                    Number(new Date(b.createdAt)) -
+                    Number(new Date(a.createdAt))
+                )
+                .map((data, index) => (
+                  <Card
+                    key={data._id}
+                    title={data.title}
+                    description={data.description}
+                    actionText="Edit"
+                    actionLink={`/dashboard/project/${data._id}`}
+                    handleSecondaryAction={() => {
+                      setIsDeletePopup(true), setSelectedProjectId(data._id);
+                    }}
+                    secondaryActiontext="Delete"
+                    projectLogoSrc={data.logo}
+                    projectScreenshotSrc={data.thumbnail}
+                    variant="adminProjectCard"
+                  />
+                ))
             ) : (
               <Typography>No Data found</Typography>
             )}

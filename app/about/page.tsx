@@ -51,11 +51,11 @@ const About = () => {
             </Typography>
             <Typography size="body1/normal" variant="secondary">
               I have one year of experience in creating user-friendly web
-              applications. I am currently working as a junior front-end
-              developer at SAHUKAR CONSULTANCY, a tech company. I have honed my
-              skills in React.js, TailwindCSS, and TypeScript, which enable me
-              to craft seamless and interactive user experiences. During my time
-              at SAHUKAR CONSULTANCY, I worked on building an e-commerce website
+              applications. I am currently working as a front-end developer at
+              SAHUKAR CONSULTANCY, a tech company. I have honed my skills in
+              React.js, TailwindCSS, and TypeScript, which enable me to craft
+              seamless and interactive user experiences. During my time at
+              SAHUKAR CONSULTANCY, I worked on building an e-commerce website
               with Astro.js and open-source commerce modules Medusa.js. I am
               enthusiastic about delivering seamless and interactive user
               experiences.
