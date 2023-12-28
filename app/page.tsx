@@ -55,7 +55,8 @@ const Home = async () => {
               Hi 👋
             </Typography>
             <Typography tag="h1" size="h2/bold">
-              <span className="text-primary-500">I'm</span> Onam Kumar Verma
+              <span className="text-primary-500">I&apos;m</span> Onam Kumar
+              Verma
             </Typography>
             <Typography size="body1/normal" variant="secondary">
               As a front-end developer, I assist emerging businesses in

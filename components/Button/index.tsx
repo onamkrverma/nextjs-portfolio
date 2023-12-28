@@ -1,15 +1,12 @@
-import { HTMLAttributes, forwardRef, ForwardedRef } from "react";
+import { forwardRef, ForwardedRef, ButtonHTMLAttributes } from "react";
 import type { VariantProps } from "class-variance-authority";
 import button from "./button.cva";
 import { cx } from "class-variance-authority";
 import Link from "next/link";
 interface Props
-  extends HTMLAttributes<HTMLButtonElement>,
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof button> {
   link?: string;
-  type?: "button" | "submit" | "reset" | undefined;
-  disabled?: boolean;
-  title: string;
 }
 
 const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>(
@@ -32,7 +29,6 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>(
             title={title}
             ref={ref as ForwardedRef<HTMLButtonElement>}
             className={classes}
-            disabled={disabled}
             {...rest}
           >
             {children}
@@ -42,5 +38,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>(
     );
   }
 );
+
+Button.displayName = "Button";
 
 export default Button;

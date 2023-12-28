@@ -13,17 +13,16 @@ const EditProduct = ({ params }: { params: { id: string } }) => {
   } | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
-  const getProject = async () => {
-    try {
-      const res = await fetch(`/api/project/${params.id}`);
-      const data = await res.json();
-      setProjectData(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
+    const getProject = async () => {
+      try {
+        const res = await fetch(`/api/project/${params.id}`);
+        const data = await res.json();
+        setProjectData(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
     getProject();
   }, [params.id]);
 

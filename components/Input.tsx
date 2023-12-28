@@ -1,7 +1,6 @@
 import { cx } from "class-variance-authority";
 import {
   DetailedHTMLProps,
-  HTMLAttributes,
   InputHTMLAttributes,
   ReactNode,
   useId,

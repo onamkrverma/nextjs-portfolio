@@ -68,10 +68,11 @@ const About = () => {
             <Typography size="body1/normal" variant="secondary">
               I hold a BSc(H) degree in chemistry, but I also have a strong
               passion for web technology. My interest began when I was in
-              college, where I used to create blogging websites using Google's
-              Blogspot platform and customize the blog themes and templates with
-              the help of HTML and CSS. Now, as a front-end developer, I am
-              exploring web technology with various tools and frameworks.
+              college, where I used to create blogging websites using
+              Google&apos;s Blogspot platform and customize the blog themes and
+              templates with the help of HTML and CSS. Now, as a front-end
+              developer, I am exploring web technology with various tools and
+              frameworks.
             </Typography>
           </div>
           <div className="flex flex-col gap-2">
