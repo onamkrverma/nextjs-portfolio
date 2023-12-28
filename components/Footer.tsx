@@ -177,7 +177,7 @@ const Footer = () => {
       >
         UI Design by{" "}
         <a
-          href="https://www.linkedin.com/in/eihab-khan/"
+          href="https://www.figma.com/community/file/1266863403759514317"
           target="_blank"
           rel="noopener noreferrer"
           className="underline"
