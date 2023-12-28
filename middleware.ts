@@ -13,6 +13,15 @@ export async function middleware(req: NextRequest) {
       return new NextResponse(JSON.stringify({ error: "Unauthorized!" }), {
         status: 401,
       });
+    } else if (pathname === "/api/auth/signup") {
+      return new NextResponse(
+        JSON.stringify({
+          error: "Unauthorized! Only existing admin can add new admin",
+        }),
+        {
+          status: 401,
+        }
+      );
     }
   } else {
     if (pathname === "/dashboard/login") {
@@ -24,5 +33,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/api/project/:path*"],
+  matcher: ["/dashboard/:path*", "/api/project/:path*", "/api/auth/:path*"],
 };
