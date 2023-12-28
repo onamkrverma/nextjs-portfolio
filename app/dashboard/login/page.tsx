@@ -6,11 +6,13 @@ import { signIn } from "next-auth/react";
 import { ChangeEvent, useState } from "react";
 
 const Login = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleLoginAdmin = async (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     setErrorMessage(null);
+    setIsLoading(true);
     const email = e.currentTarget.email.value;
     const password = e.currentTarget.password.value;
     const res = await signIn("credentials", {
@@ -18,6 +20,7 @@ const Login = () => {
       password,
       redirect: false,
     });
+    setIsLoading(false);
     if (!res?.ok) {
       return setErrorMessage(res?.error ? res?.error : null);
     }
@@ -54,6 +57,7 @@ const Login = () => {
             }
             autoComplete="email"
             placeholder={"example@gmail.com"}
+            required
           />
 
           <Input
@@ -84,9 +88,9 @@ const Login = () => {
             title="login"
             variant={"primary"}
             className="mt-4 !w-full"
-            // disabled={isLoading.value}
+            disabled={isLoading}
           >
-            {"Login"}
+            {isLoading ? "Please wait" : "Login"}
           </Button>
           <Typography variant="error">{errorMessage}</Typography>
         </form>
