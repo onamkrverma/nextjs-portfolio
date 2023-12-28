@@ -56,7 +56,7 @@ const Projects = async () => {
                   actionText="Visit Site"
                   secondaryActionLink={data.githubLink}
                   secondaryActiontext="Github"
-                  projectLogoSrc={undefined}
+                  projectLogoSrc={data.logo}
                   projectScreenshotSrc={data.thumbnail}
                   techUsed={data.techUsed}
                   variant="projectCard"
