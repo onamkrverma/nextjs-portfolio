@@ -112,7 +112,7 @@ const Card = ({
             ) : null}
           </div>
           <div className="flex gap-2 items-center mt-8 sm:mt-2">
-            {actionText ? (
+            {(actionLink || handleAction) && actionText ? (
               actionLink ? (
                 <Button
                   link={actionLink}
@@ -162,7 +162,8 @@ const Card = ({
                 </Button>
               )
             ) : null}
-            {secondaryActiontext ? (
+            {(secondaryActionLink || handleSecondaryAction) &&
+            secondaryActiontext ? (
               secondaryActionLink ? (
                 <Button
                   link={secondaryActionLink}
