@@ -7,22 +7,22 @@ import techStack from "@public/techStack.png";
 import { TProject } from "./dashboard/project/project";
 import onamImg from "@public/onam.png";
 
-async function getProjectData() {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL ??
-    `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
+// async function getProjectData() {
+//   const baseUrl =
+//     process.env.NEXT_PUBLIC_BASE_URL ??
+//     `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
 
-  const res = await fetch(
-    `${baseUrl}/api/project?search=Okv-Music&search=Okv photogram`,
-    { next: { revalidate: 3600 } }
-  );
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error("Failed to fetch project data");
-  }
+//   const res = await fetch(
+//     `${baseUrl}/api/project?search=Okv-Music&search=Okv photogram`,
+//     { next: { revalidate: 3600 } }
+//   );
+//   if (!res.ok) {
+//     // This will activate the closest `error.js` Error Boundary
+//     throw new Error("Failed to fetch project data");
+//   }
 
-  return res.json();
-}
+//   return res.json();
+// }
 
 const Home = async () => {
   const widgetCards = [
@@ -42,7 +42,8 @@ const Home = async () => {
     },
   ];
 
-  const projectsData: TProject[] = await getProjectData();
+  // const projectsData: TProject[] = await getProjectData();
+  const projectsData: TProject[] = [];
 
   return (
     <main className="container flex flex-col gap-16">

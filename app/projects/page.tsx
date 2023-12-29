@@ -7,24 +7,25 @@ export const metadata: Metadata = {
   title: "Projects | Onam - Front End Developer",
 };
 
-async function getPersonalProjectData() {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL ??
-    `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
+// async function getPersonalProjectData() {
+//   const baseUrl =
+//     process.env.NEXT_PUBLIC_BASE_URL ??
+//     `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
 
-  const res = await fetch(`${baseUrl}/api/project?tag=personal`, {
-    next: { revalidate: 3600 },
-  });
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error("Failed to fetch project data");
-  }
+//   const res = await fetch(`${baseUrl}/api/project?tag=personal`, {
+//     next: { revalidate: 3600 },
+//   });
+//   if (!res.ok) {
+//     // This will activate the closest `error.js` Error Boundary
+//     throw new Error("Failed to fetch project data");
+//   }
 
-  return res.json();
-}
+//   return res.json();
+// }
 
 const Projects = async () => {
-  const personalProjectsData: TProject[] = await getPersonalProjectData();
+  // const personalProjectsData: TProject[] = await getPersonalProjectData();
+  const personalProjectsData: TProject[] = [];
 
   return (
     <main className="container">
