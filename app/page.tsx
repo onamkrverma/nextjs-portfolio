@@ -8,10 +8,12 @@ import { TProject } from "./dashboard/project/project";
 import onamImg from "@public/onam.png";
 
 async function getProjectData() {
+  const baseUrl =
+    process.env.NODE_ENV === "development"
+      ? process.env.NEXT_PUBLIC_BASE_URL
+      : `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
   const res = await fetch(
-    `${
-      process.env.NEXT_PUBLIC_BASE_URL ?? process.env.NEXT_PUBLIC_VERCEL_URL
-    }/api/project?search=Okv-Music&search=Okv photogram`,
+    `${baseUrl}/api/project?search=Okv-Music&search=Okv photogram`,
     { next: { revalidate: 3600 } }
   );
   if (!res.ok) {

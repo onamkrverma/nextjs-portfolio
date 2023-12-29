@@ -8,14 +8,13 @@ export const metadata: Metadata = {
 };
 
 async function getPersonalProjectData() {
-  const res = await fetch(
-    `${
-      process.env.NEXT_PUBLIC_BASE_URL ?? process.env.NEXT_PUBLIC_VERCEL_URL
-    }/api/project?tag=personal`,
-    {
-      next: { revalidate: 3600 },
-    }
-  );
+  const baseUrl =
+    process.env.NODE_ENV === "development"
+      ? process.env.NEXT_PUBLIC_BASE_URL
+      : `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
+  const res = await fetch(`${baseUrl}/api/project?tag=personal`, {
+    next: { revalidate: 3600 },
+  });
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error("Failed to fetch project data");
