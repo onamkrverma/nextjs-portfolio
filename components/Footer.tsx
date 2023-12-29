@@ -158,7 +158,7 @@ const Footer = () => {
           variant="secondary"
           className="mb-16 sm:mb-0"
         >
-          © 2023 Onam kumar verma. All Rights Reserved.
+          © 2024 Onam kumar verma. All Rights Reserved.
         </Typography>
       </div>
 
