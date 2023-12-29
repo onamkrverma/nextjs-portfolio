@@ -9,10 +9,9 @@ export const metadata: Metadata = {
 
 async function getPersonalProjectData() {
   const baseUrl =
-    process.env.NODE_ENV === "development"
-      ? process.env.NEXT_PUBLIC_BASE_URL
-      : `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
-  if (!baseUrl) throw new Error("base url not found");
+    process.env.NEXT_PUBLIC_BASE_URL ??
+    `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
+
   const res = await fetch(`${baseUrl}/api/project?tag=personal`, {
     next: { revalidate: 3600 },
   });
