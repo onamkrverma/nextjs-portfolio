@@ -4,9 +4,9 @@ export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
   const httpMethod = req.method;
 
-  const authToken = req.cookies.get(
-    "next-auth.session-token" ?? "__Secure-next-auth.session-token"
-  )?.value;
+  const authToken =
+    req.cookies.get("next-auth.session-token")?.value ??
+    req.cookies.get("__Secure-next-auth.session-token")?.value;
 
   if (!authToken) {
     if (pathname === "/dashboard") {
