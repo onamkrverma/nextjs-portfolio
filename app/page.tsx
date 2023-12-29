@@ -12,6 +12,9 @@ async function getProjectData() {
     process.env.NODE_ENV === "development"
       ? process.env.NEXT_PUBLIC_BASE_URL
       : `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
+
+  if (!baseUrl) throw new Error("base url not found");
+
   const res = await fetch(
     `${baseUrl}/api/project?search=Okv-Music&search=Okv photogram`,
     { next: { revalidate: 3600 } }
