@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 async function getPersonalProjectData() {
   const res = await fetch(
-    `${process.env.NEXTAUTH_URL}/api/project?tag=personal`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/project?tag=personal`,
     {
       next: { revalidate: 3600 },
     }
