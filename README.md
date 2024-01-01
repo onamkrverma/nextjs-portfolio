@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+![image](https://github.com/onamkrverma/nextjs-portfolio/assets/106578262/262e378a-e396-4935-94e8-f223050a1d15)
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This is a portfolio website that showcases my work using Next.js. The website is fully responsive and optimized for different devices and screen resolutions. It also features a full stack functionality that enables me to log in as an admin and manage all the projects I have uploaded, such as editing, updating, or deleting them.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies used 
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Next.js**: A React framework for building fast and scalable web applications.
+- **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
+- **TypeScript**: A superset of JavaScript that adds static type checking and other features.
+- **MongoDB**: A document-based database for storing and querying data.
+- **Next Auth**: A library for implementing authentication and authorization in Next.js applications.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Features
+- **Fully responsive**: The website adapts to different screen sizes and devices, ensuring a smooth user experience across all platforms.
+- **Multipage layout**: The website consists of multiple pages, each with a specific purpose and content. You can navigate between the pages using the menu bar at the top.
+- **Admin dashboard**: The website provides a secure and user-friendly dashboard for the admin to manage the projects. The admin can log in, edit, update, or delete the projects as needed.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Getting Started with Next.js
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- This project was bootstrapped with `create-next-app`, a tool that sets up a Next.js project with the best practices and minimal configuration.
+- To run this project locally, you will need to have `node.js` and `git` installed globally on your machine.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Installation and setup instructions
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Clone this repository to your local machine using `git clone https://github.com/onamkrverma/nextjs-portfolio.git`.
+2. Install the dependencies using `npm install` in the project directory.
+3. Run the development server using `npm start` in the project directory.
+4. Open http://localhost:3000 in your browser to view the website.
+5. The website will reload automatically when you make changes to the code.
