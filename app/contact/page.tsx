@@ -141,7 +141,7 @@ const Contact = () => {
           <Textbox label="Message" name="message" minLength={10} required />
           <div className="flex justify-end gap-4 items-center mt-4">
             <Button type="reset" title="Reset" variant="danger">
-              Rest
+              Reset
             </Button>
             <Button
               type="submit"
