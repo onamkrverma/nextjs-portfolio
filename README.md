@@ -12,6 +12,9 @@ This is a portfolio website that showcases my work using Next.js. The website is
 - **MongoDB**: A document-based database for storing and querying data.
 - **Next Auth**: A library for implementing authentication and authorization in Next.js applications.
 
+**Acknowledgements** 🙌\
+I would like to express my gratitude to [Eihab Khan](https://github.com/eihabkhan) for creating and sharing the [Figma UI kit](https://www.figma.com/community/file/1266863403759514317) that I used for this portfolio. The UI kit was very helpful and inspiring for my web design.
+
 ## Features
 - **Fully responsive**: The website adapts to different screen sizes and devices, ensuring a smooth user experience across all platforms.
 - **Multipage layout**: The website consists of multiple pages, each with a specific purpose and content. You can navigate between the pages using the menu bar at the top.
