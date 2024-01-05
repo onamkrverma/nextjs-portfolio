@@ -13,6 +13,14 @@ export const metadata: Metadata = {
   title: "Onam - Front End Developer",
   description:
     "As a front-end developer, I assist emerging businesses in achieving their digital aspirations. I specialize in developing modern web applications",
+  keywords:
+    "Onam kumar verma, Onam,Portfolio, Onamkrverma, onam Portfolio, web developer Portfolio",
+  authors: [
+    { name: "Onamkrverma", url: "https://linkedin.com/in/onamkumarverma" },
+  ],
+  verification: {
+    google: "fXdwObHVbw1lHf43nqKlsB7ZwhohZGTglPx2CY4RAVg",
+  },
 };
 
 const Footer = dynamic(() => import("@components/Footer"), { ssr: false });
