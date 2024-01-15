@@ -72,15 +72,18 @@ const Card = ({
               {variant === "projectCard" ? (
                 <div>
                   <Typography size="body1/semi-bold">Tech Used</Typography>
-                  {techUsed?.split(",")?.map((item, index) => (
-                    <Typography
-                      key={index}
-                      size="small/normal"
-                      variant="secondary"
-                    >
-                      • {item}
-                    </Typography>
-                  ))}
+                  <div className="grid grid-cols-2 sm:grid-cols-3 items-center gap-3 mt-2">
+                    {techUsed?.split(",")?.map((item, index) => (
+                      <Typography
+                        key={index}
+                        size="small/normal"
+                        variant="secondary"
+                        className="border capitalize text-center bg-white dark:bg-primary-800 rounded-2xl px-3 py-1"
+                      >
+                        {item}
+                      </Typography>
+                    ))}
+                  </div>
                 </div>
               ) : null}
             </div>
