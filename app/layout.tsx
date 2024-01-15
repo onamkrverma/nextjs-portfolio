@@ -10,6 +10,7 @@ import AuthProvider from "@components/AuthProvider";
 import Button from "@components/Button";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://onam.vercel.app"),
   title: "Onam - Front End Developer",
   description:
     "As a front-end developer, I assist emerging businesses in achieving their digital aspirations. I specialize in developing modern web applications",
@@ -20,6 +21,9 @@ export const metadata: Metadata = {
   ],
   verification: {
     google: "fXdwObHVbw1lHf43nqKlsB7ZwhohZGTglPx2CY4RAVg",
+  },
+  openGraph: {
+    images: "/logo.webp",
   },
 };
 
