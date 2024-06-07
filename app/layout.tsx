@@ -8,6 +8,7 @@ import ThemeProvider from "@app/contex/ThemeContex";
 import dynamic from "next/dynamic";
 import AuthProvider from "@components/AuthProvider";
 import Button from "@components/Button";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://onam.vercel.app"),
@@ -36,9 +37,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <GoogleTagManager gtmId="GTM-NDD25RKN" />
       <ThemeProvider>
         <AuthProvider>
-          <body className={inter.className}>
+          <body className={`${inter.className} dark:bg-[#0D0D0D]`}>
             <main className="container relative">
               <div className="w-full h-[500px] absolute top-0 right-0 -z-10">
                 <Image
