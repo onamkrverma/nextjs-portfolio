@@ -19,6 +19,7 @@ type TCard = {
   techUsed?: string;
   widgetCardImg?: StaticImageData | string;
   techStackIcon?: JSX.Element;
+  tag?: "personal" | "professional";
 };
 
 const Card = ({
@@ -36,6 +37,7 @@ const Card = ({
   techUsed,
   widgetCardImg,
   techStackIcon,
+  tag,
 }: TCard) => {
   return (
     <div
@@ -63,6 +65,16 @@ const Card = ({
                 className="bg-primary-300  rounded-lg"
               />
               <Typography size="h5/semi-bold">{title}</Typography>
+              {variant === "adminProjectCard" ? (
+                <Typography
+                  size="small/normal"
+                  variant="secondary"
+                  className="bg-neutral-200 dark:bg-neutral-800 rounded-md w-fit p-1 px-2 capitalize"
+                >
+                  Tag: {tag}
+                </Typography>
+              ) : null}
+
               <Typography size="body1/normal" variant="secondary">
                 {variant === "adminProjectCard"
                   ? description.slice(0, 100) + "..."

@@ -110,19 +110,20 @@ const Dashboard = () => {
                     Number(new Date(b.createdAt)) -
                     Number(new Date(a.createdAt))
                 )
-                .map((data, index) => (
+                .map((project, index) => (
                   <Card
-                    key={data._id}
-                    title={data.title}
-                    description={data.description}
+                    key={project._id}
+                    title={project.title}
+                    tag={project.tag}
+                    description={project.description}
                     actionText="Edit"
-                    actionLink={`/dashboard/project/${data._id}`}
+                    actionLink={`/dashboard/project/${project._id}`}
                     handleSecondaryAction={() => {
-                      setIsDeletePopup(true), setSelectedProjectId(data._id);
+                      setIsDeletePopup(true), setSelectedProjectId(project._id);
                     }}
                     secondaryActiontext="Delete"
-                    projectLogoSrc={data.logo}
-                    projectScreenshotSrc={data.thumbnail}
+                    projectLogoSrc={project.logo}
+                    projectScreenshotSrc={project.thumbnail}
                     variant="adminProjectCard"
                   />
                 ))

@@ -7,6 +7,21 @@ export const metadata: Metadata = {
   title: "Projects | Onam - Front End Developer",
 };
 
+async function getProfessionalProjectData() {
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL ??
+    `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
+
+  const res = await fetch(`${baseUrl}/api/project?tag=professional`, {
+    next: { revalidate: 3600 },
+  });
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch professional project data");
+  }
+
+  return res.json();
+}
 async function getPersonalProjectData() {
   const baseUrl =
     process.env.NEXT_PUBLIC_BASE_URL ??
@@ -25,6 +40,8 @@ async function getPersonalProjectData() {
 
 const Projects = async () => {
   const personalProjectsData: TProject[] = await getPersonalProjectData();
+  const professionalProjectsData: TProject[] =
+    await getProfessionalProjectData();
 
   return (
     <main className="container">
@@ -37,7 +54,41 @@ const Projects = async () => {
         </Typography>
       </div>
       <span className="w-full block border border-primary-300 absolute right-0"></span>
-      <div className="flex flex-col gap-4 my-4 mt-20">
+
+      <div className="flex flex-col gap-2 my-4 mt-20">
+        <Typography size="h5/semi-bold" variant="secondary">
+          Professional
+        </Typography>
+
+        <div className="flex flex-col gap-8 mb-4 ">
+          {professionalProjectsData.length ? (
+            professionalProjectsData
+              .sort(
+                (a, b) =>
+                  Number(new Date(b.createdAt)) - Number(new Date(a.createdAt))
+              )
+              .map((data, index) => (
+                <Card
+                  key={data._id}
+                  title={data.title}
+                  description={data.description}
+                  actionLink={data.demoLink}
+                  actionText="Visit Site"
+                  secondaryActionLink={data.githubLink}
+                  secondaryActiontext="Github"
+                  projectLogoSrc={data.logo}
+                  projectScreenshotSrc={data.thumbnail}
+                  techUsed={data.techUsed}
+                  variant="projectCard"
+                />
+              ))
+          ) : (
+            <Typography>No Data found</Typography>
+          )}
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-4 my-8">
         <Typography size="h5/semi-bold" variant="secondary">
           Personal
         </Typography>
@@ -66,18 +117,6 @@ const Projects = async () => {
           ) : (
             <Typography>No Data found</Typography>
           )}
-        </div>
-
-        <div className="flex flex-col gap-2 ">
-          <Typography size="h5/semi-bold" variant="secondary">
-            Professional
-          </Typography>
-          <Typography size="body2/normal" variant="secondary">
-            *I have built some confidential projects for client and Due to
-            client confidentiality, I cannot reveal the projects I have built
-            for them. However, I will share any public projects I create in the
-            future.
-          </Typography>
         </div>
       </div>
     </main>
