@@ -18,9 +18,17 @@ const config: Config = {
         danger: colors.red,
       },
       textColor: {},
+      typography: {
+        DEFAULT: {
+          css: {
+            "--tw-prose-body": colors.neutral[600],
+            "--tw-prose-invert-body": colors.neutral[400],
+          },
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
   darkMode: "class",
 };
 export default config;

@@ -4,12 +4,17 @@ import onamImg from "@public/onam.png";
 import Link from "next/link";
 import { Metadata } from "next";
 import Button from "@components/Button";
-
+import AboutContent from "./AboutContent.md";
+import { remark } from "remark";
+import html from "remark-html";
 export const metadata: Metadata = {
   title: "About | Onam - Front End Developer",
 };
 
-const About = () => {
+const About = async () => {
+  const processedContent = await remark().use(html).process(AboutContent);
+  const contentHtml = processedContent.toString();
+
   return (
     <main className="container">
       <div className="flex flex-col gap-2  my-12">
@@ -36,55 +41,10 @@ const About = () => {
           />
         </div>
         <div className="flex flex-col gap-6 sm:w-3/4">
-          <div className="flex flex-col gap-2">
-            <Typography size="body1/semi-bold" className="uppercase">
-              Who i am
-            </Typography>
-            <Typography size="body1/normal" variant="secondary">
-              I am Onam Kumar Verma, a self-taught Front End developer from
-              Delhi, India.
-            </Typography>
-          </div>
-          <div className="flex flex-col gap-2">
-            <Typography size="body1/semi-bold" className="uppercase">
-              What i do
-            </Typography>
-            <Typography size="body1/normal" variant="secondary">
-              I have one year of experience in creating user-friendly web
-              applications. I am currently working as a front-end developer at
-              SAHUKAR CONSULTANCY, a tech company. I have honed my skills in
-              React.js, TailwindCSS, and TypeScript, which enable me to craft
-              seamless and interactive user experiences. During my time at
-              SAHUKAR CONSULTANCY, I worked on building an e-commerce website
-              with Astro.js and open-source commerce modules Medusa.js. I am
-              enthusiastic about delivering seamless and interactive user
-              experiences.
-            </Typography>
-          </div>
-          <div className="flex flex-col gap-2">
-            <Typography size="body1/semi-bold" className="uppercase">
-              What i did
-            </Typography>
-            <Typography size="body1/normal" variant="secondary">
-              I hold a BSc(H) degree in chemistry, but I also have a strong
-              passion for web technology. My interest began when I was in
-              college, where I used to create blogging websites using
-              Google&apos;s Blogspot platform and customize the blog themes and
-              templates with the help of HTML and CSS. Now, as a front-end
-              developer, I am exploring web technology with various tools and
-              frameworks.
-            </Typography>
-          </div>
-          <div className="flex flex-col gap-2">
-            <Typography size="body1/semi-bold" className="uppercase">
-              My Learing resources
-            </Typography>
-            <Typography size="body1/normal" variant="secondary">
-              I have acquired web technology skills from various online
-              resources, such as YouTube videos, freecodecamp, W3Schools, and
-              official documentation etc.
-            </Typography>
-          </div>
+          <div
+            className="prose dark:prose-invert"
+            dangerouslySetInnerHTML={{ __html: contentHtml }}
+          />
           <div className="flex flex-col gap-2">
             <Typography size="body1/semi-bold" className="uppercase">
               Certificates
