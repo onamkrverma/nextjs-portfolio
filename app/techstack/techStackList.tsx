@@ -237,7 +237,7 @@ export const TechStackList = [
     link: "https://astro.build/",
   },
   {
-    id: 12,
+    id: 13,
     title: "Next.js",
     icon: (
       <svg
