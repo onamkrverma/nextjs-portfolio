@@ -234,7 +234,7 @@ export const TechStackList = [
       </svg>
     ),
     subtitle: "web framework",
-    link: "https://nextjs.org/",
+    link: "https://astro.build/",
   },
   {
     id: 12,
