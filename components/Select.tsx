@@ -26,7 +26,7 @@ const Select = ({
       <select
         id={id}
         className={cx(
-          "rounded-md border-0 capitalize p-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary-600 focus-visible:outline-none",
+          "rounded-md text-gray-900 border-0 capitalize p-1.5 px-3 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary-600 focus-visible:outline-none",
           className
         )}
         {...rest}

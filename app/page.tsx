@@ -13,7 +13,7 @@ async function getProjectData() {
     `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
 
   const res = await fetch(
-    `${baseUrl}/api/project?search=Okv-Music&search=Okv photogram`,
+    `${baseUrl}/api/project?search=Okv Music&search=Okv photogram`,
     { next: { revalidate: 3600 } }
   );
   if (!res.ok) {
@@ -91,7 +91,6 @@ const Home = async () => {
           Get in touch
         </Button>
       </section>
-
       {/* selected work */}
       <section className="flex flex-col gap-4 my-8 mt-16">
         <Typography size="h3/semi-bold">Selected Work</Typography>

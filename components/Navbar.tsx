@@ -108,10 +108,11 @@ const Navbar = () => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
       document.body.style.background = "#0D0D0D";
+      document.body.style.color = "#fbfbfb";
     } else {
       document.documentElement.classList.remove("dark");
-
       document.body.style.background = "#fbfbfb";
+      document.body.style.color = "#0D0D0D";
     }
     localStorage.setItem("theme", theme);
   }, [theme]);

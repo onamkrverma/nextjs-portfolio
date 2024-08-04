@@ -1,26 +1,43 @@
 import Typography from "@components/Typography";
 
-const Loading = ({ loadingText }: { loadingText: string }) => {
+const Loading = ({ loadingText }: { loadingText?: string }) => {
   return (
     <div className="w-full h-full flex justify-center">
       <div className="flex justify-center items-center gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          fill="none"
           viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-          className={"animate-spin w-6 stroke-primary-600 duration-500"}
+          className="w-6 h-6 dark:text-primary-100"
         >
           <path
+            fill="none"
+            stroke="currentColor"
+            strokeDasharray="15"
+            strokeDashoffset="15"
             strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
-          />
+            strokeWidth="2"
+            d="M12 3C16.9706 3 21 7.02944 21 12"
+          >
+            <animate
+              fill="freeze"
+              attributeName="stroke-dashoffset"
+              dur="0.3s"
+              values="15;0"
+            />
+            <animateTransform
+              attributeName="transform"
+              dur="1.5s"
+              repeatCount="indefinite"
+              type="rotate"
+              values="0 12 12;360 12 12"
+            />
+          </path>
         </svg>
-        <Typography size="body1/semi-bold" className="capitalize">
-          {loadingText}...
-        </Typography>
+        {loadingText ? (
+          <Typography size="body1/semi-bold" className="capitalize">
+            {loadingText}...
+          </Typography>
+        ) : null}
       </div>
     </div>
   );
