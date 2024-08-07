@@ -12,7 +12,7 @@
     "@next/third-parties": "^14.2.5",
     "bcrypt": "^5.1.1",
     "class-variance-authority": "^0.7.0",
-    "mongoose": "^8.5.1",
+    "mongoose": "^8.5.2",
     "next": "^14.2.5",
     "next-auth": "^4.24.7",
     "react": "^18",
