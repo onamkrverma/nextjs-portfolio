@@ -12,6 +12,10 @@ import { GoogleTagManager } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://onam.vercel.app"),
+  alternates: {
+    canonical: "/",
+  },
+
   title: "Onam - Front End Developer",
   description:
     "As a front-end developer, I assist emerging businesses in achieving their digital aspirations. I specialize in developing modern web applications",
