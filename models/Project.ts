@@ -30,7 +30,7 @@ const ProjectSchema = new Schema(
     },
     githubLink: {
       type: String,
-      required: [true, "githubLink is required!"],
+      // required: [true, "githubLink is required!"],
       trim: true,
     },
     demoLink: {

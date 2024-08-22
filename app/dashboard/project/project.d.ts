@@ -5,7 +5,7 @@ export type TProject = {
   description: string;
   techUsed: string;
   thumbnail: string;
-  githubLink: string;
+  githubLink?: string;
   demoLink?: string;
   tag: "personal" | "professional";
   createdAt: string;

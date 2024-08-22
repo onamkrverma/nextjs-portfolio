@@ -50,23 +50,25 @@ const About = async () => {
               Certificates
             </Typography>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="w-full h-fit">
-                <Image
-                  src="https://imgur.com/VCQHGSs.png"
-                  alt="freecodecamp"
-                  width={300}
-                  height={200}
-                  quality={100}
-                  className="w-full h-full object-cover rounded-md"
-                />
-                <Link
-                  href="https://www.freecodecamp.org/certification/fccd6827402-2aa3-473a-8fd3-06849e4a7845/javascript-algorithms-and-data-structures"
-                  className="text-primary-600 dark:text-primary-50  hover:text-primary-900 underline my-2"
-                  target="_blank"
-                >
+              <Link
+                href="https://www.freecodecamp.org/certification/fccd6827402-2aa3-473a-8fd3-06849e4a7845/javascript-algorithms-and-data-structures"
+                className="relative flex group"
+                target="_blank"
+              >
+                <div className="w-full h-fit">
+                  <Image
+                    src="https://imgur.com/VCQHGSs.png"
+                    alt="freecodecamp"
+                    width={300}
+                    height={200}
+                    quality={100}
+                    className="w-full h-full object-cover rounded-md"
+                  />
+                </div>
+                <span className="text-primary-50 underline absolute w-full h-full justify-center items-center bg-primary-900/60 hidden group-hover:flex">
                   View details
-                </Link>
-              </div>
+                </span>
+              </Link>
             </div>
           </div>
         </div>
