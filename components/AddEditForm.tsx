@@ -51,7 +51,7 @@ const AddEditForm = ({
           name="tag"
           label="Select tag"
           options={["personal", "professional"]}
-          value={projectData?.tag}
+          defaultValue={projectData?.tag}
         />
         <Input
           type="text"
@@ -80,7 +80,6 @@ const AddEditForm = ({
           name="githubLink"
           label="Github Link"
           defaultValue={projectData?.githubLink}
-          required
         />
         <Input
           type="text"
