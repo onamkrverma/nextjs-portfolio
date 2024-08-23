@@ -1,11 +1,9 @@
 "use client";
 import AddEditForm from "@components/AddEditForm";
 import Typography from "@components/Typography";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
-import { TProject } from "../project";
+import { ChangeEvent, useRef, useState } from "react";
 
-const EditProduct = ({ params }: { params: { id: string } }) => {
-  const [projectData, setProjectData] = useState<TProject | null>(null);
+const AddProject = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [statusMessage, setStatusMessage] = useState<{
     variant: "error" | "success";
@@ -13,20 +11,7 @@ const EditProduct = ({ params }: { params: { id: string } }) => {
   } | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
-  useEffect(() => {
-    const getProject = async () => {
-      try {
-        const res = await fetch(`/api/project/${params.id}`);
-        const data = await res.json();
-        setProjectData(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getProject();
-  }, [params.id]);
-
-  const handleUpdate = async (e: ChangeEvent<HTMLFormElement>) => {
+  const handleAdd = async (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
     setStatusMessage(null);
@@ -45,8 +30,8 @@ const EditProduct = ({ params }: { params: { id: string } }) => {
           tag,
         } = formDataObj;
 
-        const res = await fetch(`/api/project/${params.id}`, {
-          method: "PUT",
+        const res = await fetch(`/api/project`, {
+          method: "POST",
           headers: {
             "content-type": "application/json",
           },
@@ -63,12 +48,13 @@ const EditProduct = ({ params }: { params: { id: string } }) => {
           }),
         });
         if (!res.ok) {
-          throw new Error(`Failed to update project`);
+          throw new Error("Failed to add project");
         }
         setStatusMessage({
           variant: "success",
-          message: "Project data updated successfully",
+          message: "Project added successfully",
         });
+        e.target?.reset();
       }
     } catch (error) {
       console.log(error);
@@ -83,15 +69,14 @@ const EditProduct = ({ params }: { params: { id: string } }) => {
   return (
     <main className="container ">
       <Typography size="h5/semi-bold" className="capitalize text-center">
-        Edit Project
+        Add New Project
       </Typography>
       <div className="flex justify-center ">
         <AddEditForm
-          actionText="Update Project"
           isLoading={isLoading}
+          actionText="Add Project"
           statusMessage={statusMessage}
-          handleSubmit={handleUpdate}
-          formData={projectData}
+          handleSubmit={handleAdd}
           formRef={formRef}
           variant="project"
         />
@@ -100,4 +85,4 @@ const EditProduct = ({ params }: { params: { id: string } }) => {
   );
 };
 
-export default EditProduct;
+export default AddProject;

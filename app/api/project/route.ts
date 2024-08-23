@@ -23,8 +23,8 @@ export const GET = async (req: NextRequest) => {
       const project: object[] = await Project.find();
       return new NextResponse(JSON.stringify(project), { status: 200 });
     }
-  } catch (error: any) {
-    console.error(error.message);
+  } catch (error: unknown) {
+    console.error(error instanceof Error ? error.message : error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }
@@ -34,19 +34,20 @@ export const GET = async (req: NextRequest) => {
 
 // add new project
 export const POST = async (req: Request) => {
-  const {
-    logo,
-    title,
-    description,
-    techUsed,
-    thumbnail,
-    githubLink,
-    demoLink,
-    tag,
-  } = await req.json();
-
   try {
+    const {
+      logo,
+      title,
+      description,
+      techUsed,
+      thumbnail,
+      githubLink,
+      demoLink,
+      tag,
+    } = await req.json();
+
     await connectDB();
+
     const project = new Project({
       title,
       description,
@@ -59,14 +60,12 @@ export const POST = async (req: Request) => {
     });
     const addProject = await project.save();
     return NextResponse.json(addProject, { status: 201 });
-  } catch (error: any) {
-    console.error(error.message);
-    if (error.name === "ValidationError") {
-      return NextResponse.json({ error: error.message }, { status: 422 });
-    }
-    return NextResponse.json(
-      { error: "Internal server error" },
-      { status: 500 }
-    );
+  } catch (error: unknown) {
+    console.error(error instanceof Error ? error.message : error);
+    const status =
+      error instanceof Error && error.name === "ValidationError" ? 422 : 500;
+    const message =
+      error instanceof Error ? error.message : "Internal server error";
+    return NextResponse.json({ error: message }, { status });
   }
 };

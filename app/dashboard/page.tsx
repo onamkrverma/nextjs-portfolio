@@ -2,67 +2,25 @@
 import Button from "@components/Button";
 import Typography from "@components/Typography";
 import { signOut } from "next-auth/react";
-import Card from "@components/Card";
-import { useEffect, useState } from "react";
-import { TProject } from "./project/project";
-import Loading from "@components/Loading";
-import Popup from "@components/Popup";
+import React from "react";
+import TaskListIcon from "@public/icons/task_list.svg";
+import ArrowIcon from "@public/icons/arrow.svg";
+import WorkHistoryIcon from "@public/icons/work_history.svg";
+import Link from "next/link";
 
 const Dashboard = () => {
-  const [isDeletePopup, setIsDeletePopup] = useState<boolean>(false);
-  const [projectsData, setProjectsData] = useState<TProject[]>([]);
-  const [isProjectsLoading, setIsProjectsLoading] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [selectedProjectId, setSelectedProjectId] = useState<string | null>(
-    null
-  );
-
-  const getProjects = async () => {
-    setIsProjectsLoading(true);
-    try {
-      const res = await fetch(`/api/project`);
-      const data = await res.json();
-      setProjectsData(data);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setIsProjectsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    getProjects();
-  }, []);
-
-  // handle delete project
-  const handleDelete = async () => {
-    setIsLoading(true);
-    setErrorMessage(null);
-    try {
-      if (!selectedProjectId) return;
-      const res = await fetch(`/api/project/${selectedProjectId}`, {
-        method: "DELETE",
-        headers: {
-          "content-type": "application/json",
-        },
-        credentials: "include",
-      });
-      if (!res.ok) {
-        throw new Error("Failed to delete project");
-      }
-      setIsDeletePopup(false);
-      setSelectedProjectId(null);
-      getProjects();
-    } catch (error) {
-      console.log(error);
-      if (error instanceof Error) {
-        setErrorMessage(error.message);
-      }
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const exploreOption = [
+    {
+      title: "Project list",
+      link: "/dashboard/project",
+      icon: TaskListIcon,
+    },
+    {
+      title: "Work Experience",
+      link: "/dashboard/experience",
+      icon: WorkHistoryIcon,
+    },
+  ];
 
   return (
     <main className="container !pr-0">
@@ -96,62 +54,24 @@ const Dashboard = () => {
           <span className="hidden sm:block">logout</span>
         </Button>
       </div>
-      <div className="flex flex-col gap-4 my-8">
-        <Button title="Add Project" link="/dashboard/project">
-          Add Project
-        </Button>
-
-        {!isProjectsLoading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projectsData?.length ? (
-              projectsData
-                .sort(
-                  (a, b) =>
-                    Number(new Date(b.createdAt)) -
-                    Number(new Date(a.createdAt))
-                )
-                .map((project, index) => (
-                  <Card
-                    key={project._id}
-                    title={project.title}
-                    tag={project.tag}
-                    description={project.description}
-                    actionText="Edit"
-                    actionLink={`/dashboard/project/${project._id}`}
-                    handleSecondaryAction={() => {
-                      setIsDeletePopup(true), setSelectedProjectId(project._id);
-                    }}
-                    secondaryActiontext="Delete"
-                    projectLogoSrc={project.logo}
-                    projectScreenshotSrc={project.thumbnail}
-                    variant="adminProjectCard"
-                  />
-                ))
-            ) : (
-              <Typography>No Data found</Typography>
-            )}
-          </div>
-        ) : (
-          <div className="h-40">
-            <Loading loadingText="loading" />
-          </div>
-        )}
+      <div className="flex items-center flex-wrap gap-4 justify-center my-12">
+        {exploreOption.map((opt, index) => (
+          <Link
+            key={index}
+            title="Project"
+            href={opt.link}
+            className="group relative bg-primary-100 dark:bg-primary-900 border dark:border-primary-700 shadow-md p-6 rounded-xl"
+          >
+            <span className="hidden absolute top-2 right-2 group-hover:block">
+              <ArrowIcon className="w-6 h-6 rotate-45 hidden sm:block dark:stroke-primary-50" />
+            </span>
+            <div className="flex flex-col items-center w-36 h-fit text-center transition ease-in-out duration-500 group-hover:scale-105">
+              <opt.icon className="w-20 h-20" />
+              <Typography>{opt.title}</Typography>
+            </div>
+          </Link>
+        ))}
       </div>
-
-      <Popup
-        isPopup={isDeletePopup}
-        setIsPopup={setIsDeletePopup}
-        actionText={"No"}
-        handleAction={() => {
-          setIsDeletePopup(false), setSelectedProjectId(null);
-        }}
-        handleSecondaryAction={handleDelete}
-        secondaryActiontext={"Yes,Sure"}
-        title={"Are you sure want to delete this project?"}
-        subtitle={`This will permanently delete project ID: ${selectedProjectId}`}
-        isLoading={isLoading}
-        errorMessage={errorMessage}
-      />
     </main>
   );
 };

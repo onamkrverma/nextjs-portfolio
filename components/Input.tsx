@@ -23,14 +23,13 @@ const Input = ({ label, leftAdornment, className, ...rest }: Props) => {
       {label ? (
         <label
           htmlFor={id}
-          className="relative text-sm font-medium leading-6 text-gray-900 dark:text-primary-50 flex gap-1 mb-1 w-fit"
+          className={`text-sm font-medium leading-6 text-gray-900 dark:text-primary-50 flex gap-1 mb-1 w-fit ${
+            rest.required
+              ? "after:content-['*'] after:ml-0.5 after:text-red-500"
+              : ""
+          }`}
         >
           {label}
-          {rest.required ? (
-            <span className="text-sm absolute -right-3 top-0 text-danger-600">
-              {"*"}
-            </span>
-          ) : null}
         </label>
       ) : null}
       <div className="flex rounded-md">

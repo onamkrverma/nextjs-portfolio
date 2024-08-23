@@ -1,9 +1,8 @@
 "use client";
 import Button from "@components/Button";
 import Typography from "@components/Typography";
-import Image from "next/image";
 import Link from "next/link";
-import footerGradient from "../public/footerGradient.svg";
+import FooterGradient from "../public/footerGradient.svg";
 import { poppins } from "@app/fonts";
 import { useContext } from "react";
 import { ThemeContext } from "@app/contex/ThemeContex";
@@ -164,15 +163,7 @@ const Footer = () => {
 
       {/* background gradient */}
       <div className="w-full h-[500px] absolute bottom-0 right-0 -z-10 ">
-        <Image
-          src={footerGradient}
-          alt="gradient"
-          quality={100}
-          fill
-          sizes="100vw"
-          priority
-          className="w-full object-cover blur-2xl"
-        />
+        <FooterGradient className="w-full object-cover blur-2xl" />
       </div>
       <Typography
         size="small/normal"

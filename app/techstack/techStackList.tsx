@@ -244,7 +244,7 @@ export const TechStackList = [
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 256 256"
         fill="currentColor"
-        className="w-12 h-12 sm:w-28 sm:h-28 "
+        className="w-12 h-12 sm:w-28 sm:h-28 dark:fill-black"
       >
         <defs>
           <linearGradient
