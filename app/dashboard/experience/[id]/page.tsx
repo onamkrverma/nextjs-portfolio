@@ -37,9 +37,8 @@ const EditExperience = ({ params }: { params: { id: string } }) => {
       if (formRef.current) {
         const formData = new FormData(formRef.current);
         const formDataObj = Object.fromEntries(formData.entries());
-        const { jobTitle, companyName, description, start_date, end_date } =
+        const { jobTitle, companyName, description, startDate, endDate } =
           formDataObj;
-        const durationRange = `${start_date}-To-${end_date}`;
         const res = await fetch(`/api/experience/${params.id}`, {
           method: "PUT",
           headers: {
@@ -50,7 +49,8 @@ const EditExperience = ({ params }: { params: { id: string } }) => {
             jobTitle,
             companyName,
             description,
-            durationRange,
+            startDate,
+            endDate,
           }),
         });
         if (!res.ok) {

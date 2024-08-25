@@ -7,11 +7,31 @@ import Button from "@components/Button";
 import AboutContent from "./AboutContent.md";
 import { remark } from "remark";
 import html from "remark-html";
+import WorkExperience from "@components/WorkExperience";
+
 export const metadata: Metadata = {
   title: "About | Onam - Front End Developer",
 };
 
+async function getExperienceData() {
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL ??
+    `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
+
+  const res = await fetch(`${baseUrl}/api/experience`, {
+    next: { revalidate: 0 },
+  });
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch experience data");
+  }
+
+  return res.json();
+}
+
 const About = async () => {
+  const experienceData = await getExperienceData();
+
   const processedContent = await remark().use(html).process(AboutContent);
   const contentHtml = processedContent.toString();
 
@@ -71,6 +91,7 @@ const About = async () => {
               </Link>
             </div>
           </div>
+          <WorkExperience experienceData={experienceData} />
         </div>
         <div className="flex flex-col gap-8 items-center">
           {/* image on right side */}

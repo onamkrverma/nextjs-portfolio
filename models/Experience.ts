@@ -19,9 +19,14 @@ const ExperienceSchema = new Schema(
       required: [true, "description is required!"],
       trim: true,
     },
-    durationRange: {
+
+    startDate: {
       type: String,
-      required: [true, "durationRange is required!"],
+      required: [true, "startDate is required!"],
+      trim: true,
+    },
+    endDate: {
+      type: String,
       trim: true,
     },
   },

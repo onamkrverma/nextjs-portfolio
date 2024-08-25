@@ -9,8 +9,10 @@ export type TExperience = {
   _id: string;
   jobTitle: string;
   companyName: string;
-  durationRange: string;
   description: string;
+  startDate: string;
+  endDate?: string;
+  isWorkingHere: boolean;
 };
 
 const Experience = () => {
@@ -92,15 +94,21 @@ const Experience = () => {
                       {experience.companyName}
                     </Typography>
                     <Typography className="!text-xs">
-                      {`${new Date(
-                        experience.durationRange.split("-To-")[0]
-                      ).toLocaleDateString("en", {
-                        dateStyle: "medium",
-                      })} - ${new Date(
-                        experience.durationRange.split("-To-")[1]
-                      ).toLocaleDateString("en", {
-                        dateStyle: "medium",
-                      })}`}
+                      {`${new Date(experience.startDate).toLocaleDateString(
+                        "en",
+                        {
+                          dateStyle: "medium",
+                        }
+                      )} - ${
+                        experience.endDate
+                          ? new Date(experience.endDate).toLocaleDateString(
+                              "en",
+                              {
+                                dateStyle: "medium",
+                              }
+                            )
+                          : "Present"
+                      }`}
                     </Typography>
                   </div>
 

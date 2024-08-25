@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@components/Navbar";
-import Image from "next/image";
-import topGradient from "@public/topGradient.svg";
+import TopGradient from "@public/topGradient.svg";
 import { inter, poppins } from "@app/fonts";
 import ThemeProvider from "@app/contex/ThemeContex";
 import dynamic from "next/dynamic";
@@ -47,15 +46,7 @@ export default function RootLayout({
           <body className={`${inter.className} dark:bg-[#0D0D0D]`}>
             <main className="container relative">
               <div className="w-full h-[500px] absolute top-0 right-0 -z-10">
-                <Image
-                  src={topGradient}
-                  alt="gradient"
-                  quality={100}
-                  fill
-                  sizes="100vw"
-                  priority
-                  className="w-full object-cover blur-2xl"
-                />
+                <TopGradient className="w-full object-cover blur-2xl" />
               </div>
               {/* show logo on mobile */}
               <div className="w-full relative text-center block mb-20 sm:hidden">

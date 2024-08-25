@@ -28,16 +28,16 @@ export default function Error({
         </svg>
       </div>
 
-      <Typography size="body2/normal" variant="error">
+      <Typography size="h1/semi-bold" variant="error">
         There is a problem
-      </Typography>
-
-      <Typography tag="h2" size="h4/bold" className="text-center">
-        {error.message || "Something went wrong!"}
       </Typography>
 
       <Typography size="body2/normal" className="text-center">
         Please try again later or contact website owner
+      </Typography>
+
+      <Typography className="text-center text-sm">
+        <code>{error.message}</code>
       </Typography>
 
       <Button type="button" title="try again" onClick={() => reset()}>

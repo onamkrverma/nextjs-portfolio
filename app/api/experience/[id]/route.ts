@@ -28,6 +28,14 @@ export const GET = async (
 
 // /api/experience/${id}
 
+interface ExperienceRequest {
+  jobTitle: string;
+  companyName: string;
+  description: string;
+  startDate: string;
+  endDate?: string;
+  isWorkingHere: boolean;
+}
 export const PUT = async (
   req: NextRequest,
   { params }: { params: { id: string } }
@@ -35,15 +43,13 @@ export const PUT = async (
   // const id = req.nextUrl.searchParams.get("id");
   const { id } = params;
   const {
-    logo,
-    title,
+    jobTitle,
+    companyName,
     description,
-    techUsed,
-    thumbnail,
-    githubLink,
-    demoLink,
-    tag,
-  } = await req.json();
+    startDate,
+    endDate,
+    isWorkingHere,
+  }: ExperienceRequest = await req.json();
 
   try {
     if (!id)
@@ -63,14 +69,12 @@ export const PUT = async (
       );
     }
     const updatedData = {
-      title,
+      jobTitle,
+      companyName,
       description,
-      techUsed,
-      logo,
-      thumbnail,
-      githubLink,
-      demoLink,
-      tag,
+      startDate,
+      endDate,
+      isWorkingHere,
     };
     const updateExperience = await Experience.findByIdAndUpdate(
       id,
