@@ -65,7 +65,8 @@ const Projects = async () => {
             professionalProjectsData
               .sort(
                 (a, b) =>
-                  Number(new Date(b.createdAt)) - Number(new Date(a.createdAt))
+                  new Date(b.createdAt).getTime() -
+                  Number(new Date(a.createdAt).getTime())
               )
               .map((data, index) => (
                 <Card

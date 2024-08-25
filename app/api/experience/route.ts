@@ -17,10 +17,24 @@ export const GET = async (req: NextRequest) => {
   }
 };
 
+interface ExperienceRequest {
+  jobTitle: string;
+  companyName: string;
+  description: string;
+  startDate: string;
+  endDate?: string;
+  isWorkingHere: boolean;
+}
 // add new Experience
 export const POST = async (req: Request) => {
-  const { jobTitle, companyName, description, durationRange } =
-    await req.json();
+  const {
+    jobTitle,
+    companyName,
+    description,
+    startDate,
+    endDate,
+    isWorkingHere,
+  }: ExperienceRequest = await req.json();
 
   try {
     await connectDB();
@@ -28,7 +42,9 @@ export const POST = async (req: Request) => {
       jobTitle,
       companyName,
       description,
-      durationRange,
+      startDate,
+      endDate,
+      isWorkingHere,
     });
     const addNewExperience = await experience.save();
     return NextResponse.json(addNewExperience, { status: 201 });

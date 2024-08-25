@@ -4,7 +4,7 @@ import Button from "./Button";
 import Input from "./Input";
 import Textbox from "./Textbox";
 import Typography from "./Typography";
-import { ChangeEvent, RefObject } from "react";
+import { ChangeEvent, RefObject, useState } from "react";
 import Select from "./Select";
 import { TExperience } from "@app/dashboard/experience/page";
 
@@ -30,6 +30,15 @@ const AddEditForm = ({
   formRef,
   variant,
 }: TAddEditForm) => {
+  const defaultChecked =
+    formData && "endDate" in formData
+      ? formData?.endDate
+        ? false
+        : true
+      : false;
+
+  const [isChecked, setIsChecked] = useState(defaultChecked);
+
   return (
     <div className="w-full my-6 max-w-xl p-4 bg-primary-100 dark:bg-primary-900 shadow-md rounded-lg">
       <form
@@ -133,30 +142,35 @@ const AddEditForm = ({
               defaultValue={formData?.description}
               required
             />
-            <div className="flex items-center flex-wrap gap-2">
+            <div className="flex items-center flex-col sm:flex-row gap-2">
               <Input
                 type="date"
-                name="start_date"
+                name="startDate"
                 label="Start Date"
                 defaultValue={
-                  formData && "durationRange" in formData
-                    ? formData?.durationRange.split("-To-")[0]
-                    : ""
+                  formData && "startDate" in formData ? formData?.startDate : ""
                 }
                 required
               />
               <Input
                 type="date"
-                name="end_date"
+                name="endDate"
                 label="End Date"
                 defaultValue={
-                  formData && "durationRange" in formData
-                    ? formData?.durationRange.split("-To-")[1]
-                    : ""
+                  formData && "endDate" in formData ? formData?.endDate : ""
                 }
-                required
+                disabled={isChecked}
               />
             </div>
+            <label className="flex gap-2 items-center">
+              <input
+                type="checkbox"
+                name="preset"
+                checked={isChecked}
+                onChange={(e) => setIsChecked(e.target.checked)}
+              />
+              Current working here
+            </label>
           </div>
         )}
         <div className="flex justify-end gap-4 items-center mt-4">

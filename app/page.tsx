@@ -78,6 +78,7 @@ const Home = async () => {
                 src={onamImg}
                 alt="onam"
                 quality={100}
+                priority
                 className="w-full h-full object-cover rounded-b-[20%] "
               />
             </div>
