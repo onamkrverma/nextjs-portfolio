@@ -3,7 +3,7 @@ import AddEditForm from "@components/AddEditForm";
 import Typography from "@components/Typography";
 import React, { ChangeEvent, useRef, useState } from "react";
 
-const addNewExperience = () => {
+const AddNewExperience = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [statusMessage, setStatusMessage] = useState<{
     variant: "error" | "success";
@@ -74,4 +74,4 @@ const addNewExperience = () => {
   );
 };
 
-export default addNewExperience;
+export default AddNewExperience;
