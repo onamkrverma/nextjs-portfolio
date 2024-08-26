@@ -15,6 +15,10 @@ export async function middleware(req: NextRequest) {
       return new NextResponse(JSON.stringify({ error: "Unauthorized!" }), {
         status: 401,
       });
+    } else if (pathname === "/api/experience" && httpMethod !== "GET") {
+      return new NextResponse(JSON.stringify({ error: "Unauthorized!" }), {
+        status: 401,
+      });
     } else if (pathname === "/api/auth/signup") {
       return new NextResponse(
         JSON.stringify({

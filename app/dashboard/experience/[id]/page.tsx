@@ -15,17 +15,17 @@ const EditExperience = ({ params }: { params: { id: string } }) => {
   } | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
-  const getExperience = async () => {
-    try {
-      const res = await fetch(`/api/experience/${params.id}`);
-      const data = await res.json();
-      setExperienceData(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
+    const getExperience = async () => {
+      try {
+        const res = await fetch(`/api/experience/${params.id}`);
+        const data = await res.json();
+        setExperienceData(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     getExperience();
   }, [params.id]);
 

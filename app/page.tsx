@@ -8,7 +8,9 @@ import { TProject } from "./dashboard/project/project";
 import onamImg from "@public/onam.png";
 
 async function getProjectData() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL ??
+    `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
 
   const res = await fetch(
     `${baseUrl}/api/project?search=Okv Music&search=Okv photogram`,
