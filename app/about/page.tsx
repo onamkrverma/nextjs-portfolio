@@ -14,9 +14,7 @@ export const metadata: Metadata = {
 };
 
 async function getExperienceData() {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL ??
-    `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
   const res = await fetch(`${baseUrl}/api/experience`, {
     next: { revalidate: 3600 },
