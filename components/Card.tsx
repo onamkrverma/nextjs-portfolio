@@ -270,20 +270,20 @@ const Card = ({
             className="flex flex-row sm:flex-col items-center gap-4 relative group"
           >
             {techStackIcon ? (
-              <div className="flex justify-center items-center transition w-full  ease-in-out duration-500 group-hover:scale-105">
-                <span className="hidden absolute -top-1 -right-1 group-hover:block">
+              <div className="flex justify-center items-center transition  ease-in-out duration-500 group-hover:scale-110">
+                <span className="hidden absolute -top-2 -right-6 group-hover:block">
                   <ArrowIcon className="w-6 h-6 rotate-45 hidden sm:block dark:stroke-primary-50" />
                 </span>
                 {techStackIcon}
               </div>
             ) : null}
 
-            <div className="flex justify-between flex-col  gap-2  items-center w-full">
+            <div className="flex justify-between flex-col gap-2 items-center w-full">
               <Typography size="body1/semi-bold">{title}</Typography>
               <Typography
-                size="body2/normal"
+                size="small/normal"
                 variant="secondary"
-                className="border capitalize bg-white dark:bg-primary-800 rounded-2xl px-3 py-1"
+                className="border text-center capitalize bg-white dark:bg-primary-800 rounded-2xl px-3 py-1"
               >
                 {description}
               </Typography>

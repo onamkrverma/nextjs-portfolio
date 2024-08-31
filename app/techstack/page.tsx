@@ -25,7 +25,7 @@ const TechStack = () => {
           Tools & Technology
         </Typography>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 ">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-4 md:grid-cols-5 ">
           {TechStackList.sort((a, b) => b.id - a.id).map((data, index) => (
             <Card
               key={data.id}
