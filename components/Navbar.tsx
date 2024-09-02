@@ -120,7 +120,7 @@ const Navbar = () => {
   return currentPath !== "/dashboard/login" ? (
     <>
       <header
-        className={`hidden sm:block bg-white/25 border-white/50 rounded-xl border backdrop-blur-md dark:bg-primary-900/30 dark:border-white/20 `}
+        className={`hidden sm:block bg-white/25 border-white/20  rounded-xl border backdrop-blur-md dark:bg-primary-900/30  `}
       >
         <nav className="flex items-center justify-between  p-4">
           <div className="flex items-center gap-8">

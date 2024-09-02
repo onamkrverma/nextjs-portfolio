@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@components/Navbar";
-import TopGradient from "@public/topGradient.svg";
 import { inter, poppins } from "@app/fonts";
 import ThemeProvider from "@app/contex/ThemeContex";
 import dynamic from "next/dynamic";
@@ -45,8 +44,8 @@ export default function RootLayout({
         <AuthProvider>
           <body className={`${inter.className} dark:bg-[#0D0D0D]`}>
             <main className="container relative">
-              <div className="w-full h-[500px] absolute top-0 right-0 -z-10">
-                <TopGradient className="w-full object-cover blur-2xl" />
+              <div className="absolute top-0 w-full h-48 -z-10 flex items-center justify-center rounded-full">
+                <span className="bg-custom_gradient block w-3/4 h-full blur-3xl" />
               </div>
               {/* show logo on mobile */}
               <div className="w-full relative text-center block mb-20 sm:hidden">

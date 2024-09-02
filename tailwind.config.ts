@@ -11,7 +11,8 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        "top-gradient": "url('/topGradient.svg')",
+        custom_gradient:
+          "linear-gradient(45deg, rgb(63 100 233 / 45%), rgb(233 63 63 / 45%),rgb(255 184 0 / 45%))",
       },
       colors: {
         primary: colors.neutral,

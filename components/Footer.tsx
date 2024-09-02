@@ -2,7 +2,6 @@
 import Button from "@components/Button";
 import Typography from "@components/Typography";
 import Link from "next/link";
-import FooterGradient from "../public/footerGradient.svg";
 import { poppins } from "@app/fonts";
 import { useContext } from "react";
 import { ThemeContext } from "@app/contex/ThemeContex";
@@ -47,7 +46,7 @@ const Footer = () => {
   const currentPath = usePathname();
 
   return currentPath !== "/dashboard/login" ? (
-    <footer className="relative mt-8 pb-8 ">
+    <footer className="container relative mt-8 pb-8 ">
       <span className="w-full block border border-primary-300 mb-10"></span>
 
       <div className="container">
@@ -64,9 +63,9 @@ const Footer = () => {
             </Button>
           </div>
           {/* footer links */}
-          <div className="flex justify-between flex-col sm:flex-row gap-4 sm:gap-20 mr-4">
+          <div className="flex justify-between flex-wrap gap-4 sm:gap-20 mr-4">
             <div className="flex flex-col gap-4">
-              <Typography size="body1/semi-bold">Link</Typography>
+              <Typography size="h6/semi-bold">Navigation</Typography>
               <ul className="flex flex-col gap-2">
                 {navLinks.map((navLink, index) => (
                   <li key={index}>
@@ -82,7 +81,7 @@ const Footer = () => {
               </ul>
             </div>
             <div className="flex flex-col gap-4">
-              <Typography size="body1/semi-bold">Social</Typography>
+              <Typography size="h6/semi-bold">Social</Typography>
               <ul className="flex flex-col gap-2">
                 {socialLinks.map((socialLink, index) => (
                   <li key={index}>
@@ -162,8 +161,8 @@ const Footer = () => {
       </div>
 
       {/* background gradient */}
-      <div className="w-full h-[500px] absolute bottom-0 right-0 -z-10 ">
-        <FooterGradient className="w-full object-cover blur-2xl" />
+      <div className="absolute bottom-0 w-full h-48 -z-10 flex items-center justify-center rounded-full">
+        <span className="bg-custom_gradient block w-3/4 h-full blur-3xl rotate-180" />
       </div>
       <Typography
         size="small/normal"
