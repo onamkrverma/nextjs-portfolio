@@ -57,7 +57,7 @@ const Login = () => {
               </svg>
             }
             autoComplete="email"
-            placeholder={"example@gmail.com"}
+            placeholder="example@gmail.com"
             required
           />
 
@@ -81,7 +81,7 @@ const Login = () => {
             autoComplete="current-password"
             required
             minLength={6}
-            placeholder="Your Curiosta password"
+            placeholder="Your password"
           />
 
           <Button
