@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@next/third-parties": "^14.2.7",
+    "@next/third-parties": "^14.2.15",
     "bcrypt": "^5.1.1",
     "class-variance-authority": "^0.7.0",
     "mongoose": "^8.6.3",
