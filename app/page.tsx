@@ -13,7 +13,7 @@ async function getProjectData() {
     `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
 
   const res = await fetch(
-    `${baseUrl}/api/project?search=Okv Music&search=Okv photogram`,
+    `${baseUrl}/api/project?search=Okv Tunes&search=Okv photogram`,
     { next: { revalidate: 3600 } }
   );
   if (!res.ok) {
