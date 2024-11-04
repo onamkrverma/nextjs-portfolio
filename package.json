@@ -13,7 +13,7 @@
     "bcrypt": "^5.1.1",
     "class-variance-authority": "^0.7.0",
     "mongoose": "^8.7.1",
-    "next": "^14.2.13",
+    "next": "^15.0.2",
     "next-auth": "^4.24.7",
     "react": "^18",
     "react-dom": "^18",
