@@ -161,7 +161,7 @@ const Footer = () => {
       </div>
 
       {/* background gradient */}
-      <div className="absolute bottom-0 w-full h-48 -z-10 flex items-center justify-center rounded-full">
+      <div className="absolute bottom-0 h-48 w-[90%] -z-10 flex items-center justify-center rounded-full">
         <span className="bg-custom_gradient block w-3/4 h-full blur-3xl rotate-180" />
       </div>
       <Typography

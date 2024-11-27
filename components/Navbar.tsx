@@ -2,10 +2,15 @@
 import Link from "next/link";
 import Button from "@components/Button";
 import { usePathname } from "next/navigation";
-import { poppins } from "@app/fonts";
 import { useContext, useEffect } from "react";
 import { ThemeContext } from "@app/contex/ThemeContex";
+import { Poppins } from "next/font/google";
 
+const poppins = Poppins({
+  display: "swap",
+  weight: ["200", "400", "500", "600"],
+  subsets: ["latin"],
+});
 const Navbar = () => {
   const navLinks = [
     {
@@ -129,7 +134,7 @@ const Navbar = () => {
               link="/"
               variant="icon"
               title="onam"
-              className={`!text-2xl !p-0 dark:text-white !font-bold ${poppins.className} `}
+              className={`!text-2xl !p-0 dark:text-white !font-bold ${poppins.className}`}
             >
               {"<Onam/>"}
             </Button>

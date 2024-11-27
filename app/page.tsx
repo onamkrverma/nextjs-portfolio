@@ -87,7 +87,7 @@ const Home = async () => {
         <Button
           link="/contact"
           title="Get in touch"
-          className="!w-full sm:!w-fit hover:bg-primary-700"
+          className="!w-full sm:!w-fit hover:bg-primary-700 dark:border border-primary-600"
         >
           Get in touch
         </Button>
@@ -147,7 +147,7 @@ const Home = async () => {
         <Button
           link="/contact"
           title="connect"
-          className="items-center gap-2 !w-full sm:!w-fit"
+          className="items-center gap-2 !w-full sm:!w-fit dark:border border-primary-600"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

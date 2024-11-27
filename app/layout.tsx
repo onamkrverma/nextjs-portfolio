@@ -38,13 +38,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <GoogleTagManager gtmId="GTM-NDD25RKN" />
       <ThemeProvider>
         <AuthProvider>
           <body className={`${inter.className} dark:bg-[#0D0D0D]`}>
             <main className="container relative">
-              <div className="absolute top-0 w-full h-48 -z-10 flex items-center justify-center rounded-full">
+              <div className="absolute top-0 w-[90%] h-48 -z-10 flex items-center justify-center rounded-full">
                 <span className="bg-custom_gradient block w-3/4 h-full blur-3xl" />
               </div>
               {/* show logo on mobile */}

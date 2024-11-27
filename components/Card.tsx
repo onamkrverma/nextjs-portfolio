@@ -133,7 +133,7 @@ const Card = ({
                   link={actionLink}
                   title={actionText}
                   variant="primary"
-                  className="gap-1 items-center !py-2 !shadow-md shadow-primary-600"
+                  className="gap-1 items-center !py-2 !shadow-md shadow-primary-600 dark:border border-primary-600"
                 >
                   {actionText}
                   <svg
@@ -156,7 +156,7 @@ const Card = ({
                   type="button"
                   title={actionText}
                   variant="primary"
-                  className="gap-1 items-center !py-2 !shadow-md shadow-primary-600"
+                  className="gap-1 items-center !py-2 !shadow-md shadow-primary-600 dark:border border-primary-600"
                   onClick={handleAction}
                 >
                   {actionText}

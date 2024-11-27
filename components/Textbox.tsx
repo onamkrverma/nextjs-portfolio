@@ -27,9 +27,9 @@ const Textbox = ({ label, name, minLength, className, ...rest }: Props) => {
         id={id}
         name={name}
         className={cx(
-          `block w-full rounded-md border-0 p-1.5 px-3 text-gray-900 shadow-sm
-      ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2
-      focus:ring-inset focus:ring-primary-600  sm:text-sm sm:leading-6 focus-visible:outline-none`,
+          `block w-full rounded-md border-0 p-1.5 px-3 text-gray-900 shadow-sm  dark:bg-transparent dark:text-white
+      ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1
+      focus:ring-inset focus:ring-primary-500 dark:focus:ring-primary-200   sm:text-sm sm:leading-6 focus-visible:outline-none`,
           className
         )}
         rows={4}
