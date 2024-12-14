@@ -4,7 +4,7 @@ I am Onam Kumar Verma, a self-taught Front End developer from Delhi, India.
 
 **WHAT I DO**
 
-With over a year of experience as an adept front-end developer, I partner with emerging businesses to fulfill their digital goals, specializing in the craft of modern web applications. My expertise encompasses responsive design, user experience optimization, and implementing the latest web technologies to ensure dynamic and engaging online platforms.
+With over 2 years of experience as an adept front-end developer, I partner with emerging businesses to fulfill their digital goals, specializing in the craft of modern web applications. My expertise encompasses responsive design, user experience optimization, and implementing the latest web technologies to ensure dynamic and engaging online platforms.
 
 My understanding of backend technologies such as Node.js, Express, MongoDB, and RESTful APIs complements my front-end expertise, enabling me to grasp the full spectrum of web development and collaborate effectively with fellow developers.
 
