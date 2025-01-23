@@ -6,6 +6,7 @@ import aboutVector from "@public/aboutVector.png";
 import techStack from "@public/techStack.png";
 import { TProject } from "./dashboard/project/project";
 import onamImg from "@public/onam.png";
+import MovableIcon from "@components/MovableIcon";
 
 async function getProjectData() {
   const baseUrl =
@@ -47,7 +48,8 @@ const Home = async () => {
   return (
     <main className="container flex flex-col gap-16">
       {/* hero section */}
-      <section className="flex flex-col gap-4 mb-12">
+      <section className="flex flex-col gap-4 mb-12 relative">
+        {/* <MovableIcon /> */}
         <div className="flex items-center justify-center gap-4">
           <div className="flex flex-col gap-4 sm:w-10/12 md:w-full">
             <Typography
