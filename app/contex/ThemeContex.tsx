@@ -7,9 +7,11 @@ import {
   useState,
 } from "react";
 
+type TTheme = "light" | "dark";
+
 type TContext = {
-  theme: string;
-  setTheme: Dispatch<SetStateAction<string>>;
+  theme: TTheme;
+  setTheme: Dispatch<SetStateAction<TTheme>>;
 };
 
 export const ThemeContext = createContext<TContext>({
@@ -19,9 +21,11 @@ export const ThemeContext = createContext<TContext>({
 
 const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const localTheme =
-    typeof window !== "undefined" ? window.localStorage.getItem("theme") : null;
+    typeof window !== "undefined"
+      ? (window.localStorage.getItem("theme") as TTheme)
+      : null;
 
-  const [theme, setTheme] = useState<string>(localTheme ?? "dark");
+  const [theme, setTheme] = useState<TTheme>(localTheme ?? "dark");
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>

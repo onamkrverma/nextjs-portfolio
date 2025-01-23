@@ -3,10 +3,10 @@ import "./globals.css";
 import Navbar from "@components/Navbar";
 import { inter, poppins } from "@app/fonts";
 import ThemeProvider from "@app/contex/ThemeContex";
-import dynamic from "next/dynamic";
 import AuthProvider from "@components/AuthProvider";
 import Button from "@components/Button";
 import { GoogleTagManager } from "@next/third-parties/google";
+import Footer from "@components/Footer";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://onam.vercel.app"),
@@ -29,8 +29,6 @@ export const metadata: Metadata = {
     images: "/logo.webp",
   },
 };
-
-const Footer = dynamic(() => import("@components/Footer"), { ssr: false });
 
 export default function RootLayout({
   children,
