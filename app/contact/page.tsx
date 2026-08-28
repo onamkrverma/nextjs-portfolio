@@ -77,7 +77,7 @@ const Contact = () => {
         }
         setStatusMessage({
           variant: "success",
-          message: "Mail send successfully",
+          message: "Message sent successfully",
         });
         e.target?.reset();
       }

@@ -36,7 +36,7 @@ const Home = async () => {
     {
       id: "2",
       title: "Tech Stack",
-      subtitle: "The dev tools and tech stack I use",
+      subtitle: "Frontend, backend, data and the tools I ship with",
       icon: techStack,
       link: "/techstack",
     },
@@ -63,9 +63,9 @@ const Home = async () => {
               Verma
             </Typography>
             <Typography size="body1/normal" variant="secondary">
-              As a front-end developer, I assist emerging businesses in
-              achieving their digital aspirations. I specialize in developing
-              modern web applications.
+              I started out building interfaces. Then I got tired of shipping
+              half a feature and waiting on someone else&apos;s API, so I learned
+              to build that half too. Now I work across the whole stack.
             </Typography>
           </div>
           {/* image */}

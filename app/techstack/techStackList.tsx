@@ -15,6 +15,15 @@ import NextjsIcon from "@public/icons/nextjs.svg";
 import NodjejsIcon from "@public/icons/nodejs.svg";
 import MongodbIcon from "@public/icons/mongodb.svg";
 import ExpressjsIcon from "@public/icons/expressjs.svg";
+import NestjsIcon from "@public/icons/nestjs.svg";
+import PythonIcon from "@public/icons/python.svg";
+import FastapiIcon from "@public/icons/fastapi.svg";
+import PostgresqlIcon from "@public/icons/postgresql.svg";
+import RedisIcon from "@public/icons/redis.svg";
+import DockerIcon from "@public/icons/docker.svg";
+import AwsIcon from "@public/icons/aws.svg";
+import GithubActionsIcon from "@public/icons/githubactions.svg";
+import GitIcon from "@public/icons/git.svg";
 
 export const TechStackList = [
   {
@@ -41,18 +50,14 @@ export const TechStackList = [
   {
     id: 3,
     title: "Bootstrap",
-    icon: (
-      <BootstapIcon className="w-12 h-12 sm:w-24 sm:h-24 fill-violet-600" />
-    ),
+    icon: <BootstapIcon className="w-12 h-12 sm:w-24 sm:h-24 fill-violet-600" />,
     subtitle: "css framework",
     link: "https://getbootstrap.com/",
   },
   {
     id: 4,
     title: "TailwindCSS",
-    icon: (
-      <TailwindCssIcon className="w-12 h-12 sm:w-24 sm:h-24  fill-sky-500 " />
-    ),
+    icon: <TailwindCssIcon className="w-12 h-12 sm:w-24 sm:h-24  fill-sky-500 " />,
     subtitle: "css framework",
     link: "https://tailwindcss.com/",
   },
@@ -60,9 +65,7 @@ export const TechStackList = [
   {
     id: 5,
     title: "GitHub",
-    icon: (
-      <GithubIcon className="w-12 h-12 sm:w-24 sm:h-24  fill-black dark:fill-primary-50" />
-    ),
+    icon: <GithubIcon className="w-12 h-12 sm:w-24 sm:h-24  fill-black dark:fill-primary-50" />,
     subtitle: "Version Control",
     link: "https://github.com/",
   },
@@ -76,9 +79,7 @@ export const TechStackList = [
   {
     id: 7,
     title: "Firebase",
-    icon: (
-      <FirebaseIcon className="w-12 h-12 sm:w-24 sm:h-24  fill-amber-300" />
-    ),
+    icon: <FirebaseIcon className="w-12 h-12 sm:w-24 sm:h-24  fill-amber-300" />,
     subtitle: "BAAS",
     link: "https://firebase.google.com/",
   },
@@ -135,9 +136,7 @@ export const TechStackList = [
   {
     id: 15,
     title: "Astro.js",
-    icon: (
-      <AstrojsIcon className="w-12 h-12 sm:w-24 sm:h-24 dark:fill-white " />
-    ),
+    icon: <AstrojsIcon className="w-12 h-12 sm:w-24 sm:h-24 dark:fill-white " />,
     subtitle: "web framework",
     link: "https://astro.build/",
   },
@@ -147,5 +146,68 @@ export const TechStackList = [
     icon: <NextjsIcon className="w-12 h-12 sm:w-24 sm:h-24" />,
     subtitle: "web framework",
     link: "https://nextjs.org/",
+  },
+  {
+    id: 17,
+    title: "Git",
+    icon: <GitIcon className="w-12 h-12 sm:w-24 sm:h-24" />,
+    subtitle: "version control",
+    link: "https://git-scm.com/",
+  },
+  {
+    id: 18,
+    title: "GitHub Actions",
+    icon: <GithubActionsIcon className="w-12 h-12 sm:w-24 sm:h-24" />,
+    subtitle: "ci/cd",
+    link: "https://github.com/features/actions",
+  },
+  {
+    id: 19,
+    title: "AWS",
+    icon: <AwsIcon className="w-12 h-12 sm:w-24 sm:h-24" />,
+    subtitle: "cloud platform",
+    link: "https://aws.amazon.com/",
+  },
+  {
+    id: 20,
+    title: "Docker",
+    icon: <DockerIcon className="w-12 h-12 sm:w-24 sm:h-24" />,
+    subtitle: "containerization",
+    link: "https://www.docker.com/",
+  },
+  {
+    id: 21,
+    title: "Redis",
+    icon: <RedisIcon className="w-12 h-12 sm:w-24 sm:h-24" />,
+    subtitle: "in-memory store",
+    link: "https://redis.io/",
+  },
+  {
+    id: 22,
+    title: "PostgreSQL",
+    icon: <PostgresqlIcon className="w-12 h-12 sm:w-24 sm:h-24" />,
+    subtitle: "sql database",
+    link: "https://www.postgresql.org/",
+  },
+  {
+    id: 23,
+    title: "FastAPI",
+    icon: <FastapiIcon className="w-12 h-12 sm:w-24 sm:h-24" />,
+    subtitle: "python framework",
+    link: "https://fastapi.tiangolo.com/",
+  },
+  {
+    id: 24,
+    title: "Python",
+    icon: <PythonIcon className="w-12 h-12 sm:w-24 sm:h-24" />,
+    subtitle: "programming language",
+    link: "https://www.python.org/",
+  },
+  {
+    id: 25,
+    title: "NestJS",
+    icon: <NestjsIcon className="w-12 h-12 sm:w-24 sm:h-24" />,
+    subtitle: "backend framework",
+    link: "https://nestjs.com/",
   },
 ];

@@ -4,7 +4,9 @@ import { TechStackList } from "./techStackList";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "TechStack | Onam - Front End Developer",
+  title: "Tech Stack",
+  description:
+    "The full stack Onam Kumar Verma works in: React and Next.js on the frontend, Node.js, NestJS and Python on the backend, PostgreSQL, MongoDB and Redis for data, Docker and AWS to ship it.",
 };
 
 const TechStack = () => {
@@ -15,7 +17,7 @@ const TechStack = () => {
           Tech Stack
         </Typography>
         <Typography size="body2/normal" variant="secondary">
-          The dev tools and tech stack I use{" "}
+          The frontend, backend, data and infrastructure I build with{" "}
         </Typography>
       </div>
       <span className="w-full block border border-primary-300 absolute right-0"></span>

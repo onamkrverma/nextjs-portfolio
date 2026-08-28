@@ -4,7 +4,9 @@ import Typography from "@components/Typography";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Projects | Onam - Front End Developer",
+  title: "Projects",
+  description:
+    "Full stack projects by Onam Kumar Verma. Web applications built end to end with Next.js, Node.js, NestJS, Python and PostgreSQL.",
 };
 
 async function getProfessionalProjectData() {

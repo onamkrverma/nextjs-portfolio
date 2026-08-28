@@ -125,7 +125,7 @@ const Footer = () => {
         </div>
         <div className="flex justify-between items-center gap-2 flex-wrap mb-16 sm:mb-0">
           <Typography size="small/normal" variant="secondary">
-            © 2024 Onam kumar verma. All Rights Reserved.
+            © {new Date().getFullYear()} Onam Kumar Verma. All Rights Reserved.
           </Typography>
           <div className="flex items-center justify-between gap-1 py-0.5 px-[2px] border border-neutral-600 dark:border-neutral-300  rounded-xl">
             <Button
@@ -176,7 +176,7 @@ const Footer = () => {
         >
           Eihab Khan
         </a>{" "}
-        and Develop by{" "}
+        and developed by{" "}
         <a
           href="https://linkedin.com/in/onamkumarverma"
           target="_blank"

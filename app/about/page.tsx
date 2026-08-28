@@ -10,7 +10,9 @@ import html from "remark-html";
 import WorkExperience from "@components/WorkExperience";
 
 export const metadata: Metadata = {
-  title: "About | Onam - Front End Developer",
+  title: "About",
+  description:
+    "Onam Kumar Verma is a full stack developer from Delhi, India. How I moved from building interfaces to owning the services, APIs and data models underneath them.",
 };
 
 async function getExperienceData() {
@@ -39,10 +41,10 @@ const About = async () => {
     <main className="container">
       <div className="flex flex-col gap-2  my-12">
         <Typography size="h3/semi-bold" className="!text-3xl sm:text-4xl">
-          A litle bit about me
+          A little bit about me
         </Typography>
         <Typography size="body2/normal" variant="secondary">
-          Who am i and what i do
+          Who I am and what I do
         </Typography>
       </div>
       <span className="w-full block border border-primary-300 absolute right-0"></span>
